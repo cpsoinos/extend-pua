@@ -14,16 +14,16 @@ const SenatorSocialInfoRow = (props: SenatorSocialInfoRowProps) => {
   const socialHandles = [instagram, twitter, facebook, emailAndPhone]
 
   return (
-    <div className="flex items-center border border-solid border-1 border-red-flag p-2">
+    <div className="flex flex-wrap md:flex-no-wrap items-center border border-solid border-1 border-red-flag p-2">
       <SenatorBasicInfo
-        className="w-1/3"
+        className="w-full md:w-1/4 md:min-w-1/4"
         lastName={lastName}
         firstName={firstName}
         usState={usState}
         party={party}
         upForReElection={upForReElection}
       />
-      <div className="flex flex-wrap w-full items-center">
+      <div className="flex mt-2 md:mt-0 flex-wrap w-full items-center">
         {socialHandles.map((platformInfo, i) => {
           return (
             <div className="w-1/2 md:w-1/4">

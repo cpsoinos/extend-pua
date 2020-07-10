@@ -12,8 +12,8 @@ const SocialHandleButton = (props: SocialHandleButtonProps) => {
   const { platform, handle, url, phone } = props
 
   return (
-    <div className="text-center text-xxs px-1">
-      <Button href={url} className="w-full">
+    <div className="text-center text-xxs p-1">
+      <Button href={url} className="w-full truncate">
         {handle || ''}
       </Button>
       <p className="uppercase text-white mt-2 text-xxs font-semibold tracking-wider">

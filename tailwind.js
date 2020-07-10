@@ -354,6 +354,8 @@ module.exports = {
     minWidth: {
       '0': '0',
       '40': '10rem',
+      '1/4': '25%',
+      '1/3': `${(1/3) * 100}%`,
       full: '100%',
     },
     objectPosition: {

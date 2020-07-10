@@ -14,7 +14,7 @@ const SenatorBasicInfo = (props: SenatorBasicInfoProps) => {
 
   return (
     <div className={className}>
-      <p className="text-xl text-white uppercase tracking-widest leading-none -mb-1">{lastName}</p>
+      <p className="text-xl text-white uppercase tracking-widest leading-none -mb-1 truncate">{lastName}</p>
       <p className="text-red-flag uppercase tracking-widest leading-none -mb-1">{firstName}</p>
       <p className="text-white uppercase tracking-widest leading-none">
         <span>{usState}</span>
