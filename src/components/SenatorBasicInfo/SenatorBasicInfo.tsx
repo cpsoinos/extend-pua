@@ -14,10 +14,13 @@ const SenatorBasicInfo = (props: SenatorBasicInfoProps) => {
 
   return (
     <div className={className}>
-      <p className="text-2xl text-white font-bold uppercase tracking-widest leading-none -mb-1">{lastName}</p>
-      <p className="text-red-600 font-bold uppercase tracking-widest leading-none -mb-1">{firstName}</p>
-      <p className="text-white font-bold uppercase tracking-widest leading-none">{usState} {party}</p>
-      <p className="text-xs text-white italic">Up for Re-Election: {upForReElection}</p>
+      <p className="text-xl text-white uppercase tracking-widest leading-none -mb-1">{lastName}</p>
+      <p className="text-red-flag uppercase tracking-widest leading-none -mb-1">{firstName}</p>
+      <p className="text-white uppercase tracking-widest leading-none">
+        <span>{usState}</span>
+        <span className="ml-2">{party}</span>
+      </p>
+      <p className="font-sans text-xxs text-white italic">Up for Re-Election: {upForReElection}</p>
     </div>
   )
 }

@@ -2,9 +2,9 @@ import React from 'react'
 import Button from '../Button/Button'
 
 export interface SocialHandleButtonProps {
-  platform:  string // 'facebook' | 'twitter' | 'instagram' | 'emailAndPhone'
-  handle: string
-  url: string
+  platform: string
+  handle?: string
+  url?: string
   phone?: string
 }
 
@@ -12,11 +12,11 @@ const SocialHandleButton = (props: SocialHandleButtonProps) => {
   const { platform, handle, url, phone } = props
 
   return (
-    <div className="text-center text-xs">
-      <Button href={url}>
-        {handle}
+    <div className="text-center text-xxs px-1">
+      <Button href={url} className="w-full">
+        {handle || ''}
       </Button>
-      <p className="uppercase text-white mt-2 text-sm font-semibold tracking-wider">
+      <p className="uppercase text-white mt-2 text-xxs font-semibold tracking-wider">
         {phone && (
           <a href={`tel:${phone}`}>
             {phone}

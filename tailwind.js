@@ -30,6 +30,7 @@ module.exports = {
         900: '#1a202c',
       },
       red: {
+        'flag': '#d10000',
         100: '#fff5f5',
         200: '#fed7d7',
         300: '#feb2b2',
@@ -85,6 +86,7 @@ module.exports = {
         900: '#234e52',
       },
       blue: {
+        'deep-sky': '#00b3ff',
         100: '#ebf8ff',
         200: '#bee3f8',
         300: '#90cdf4',
@@ -231,6 +233,14 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
+      lulo: [
+        '"Lulo Clean W01 One"',
+        'sans-serif'
+      ],
+      luloBold: [
+        '"Lulo Clean W01 One Bold"',
+        'sans-serif'
+      ],
       sans: [
         'system-ui',
         '-apple-system',
@@ -250,6 +260,7 @@ module.exports = {
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
     },
     fontSize: {
+      xxs: '0.5rem',
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',
@@ -342,6 +353,7 @@ module.exports = {
     },
     minWidth: {
       '0': '0',
+      '40': '10rem',
       full: '100%',
     },
     objectPosition: {
@@ -357,6 +369,7 @@ module.exports = {
     },
     opacity: {
       '0': '0',
+      '10': '0.1',
       '25': '0.25',
       '50': '0.5',
       '75': '0.75',
