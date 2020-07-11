@@ -4,7 +4,10 @@ export const useSenatorSocialHandles = () => {
   const getSenatorSocialHandles = async () => {
     const senatorSocialHandlesList: SenatorSocialHandlesResponse = await (await (await fetch('https://www.extendpua.org/_functions/senatorSocialHandles')).json())
 
-    return senatorSocialHandlesList.items
+    const socialHandles = senatorSocialHandlesList.items.filter((senator) => {
+      return senator.last !== 'Last Name'
+    })
+    return socialHandles
   }
 
   return { getSenatorSocialHandles }

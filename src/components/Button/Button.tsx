@@ -96,7 +96,7 @@ const Button = (props: ButtonProps) => {
     onBlur
   } = props
 
-  const classes = classNames('bg-red-flag', 'hover:bg-blue-deep-sky', 'transition', 'ease-in', 'duration-200', 'text-white', 'p-2', 'rounded-md', `${className}`.trim())
+  const classes = classNames('bg-red-flag', 'hover:bg-blue-deep-sky', 'transition', 'ease-in', 'duration-200', 'text-white', 'p-2', 'rounded-md', 'leading-loose', `${className}`.trim())
 
   const btnProps = pickBy({
     type: buttonType,

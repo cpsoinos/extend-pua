@@ -26,6 +26,13 @@ const SenatorSocialHandles = () => {
 
   return (
     <>
+      <p className="text-center text-white leading-none">
+        Senate Social Handles List<br />
+        Courtesy JOE BEUMER,{' '}
+        <a className="underline" href="http://www.instagram.com/beanartshero">
+          <span>@BE</span><span className="text-red-flag">AN</span>ARTS<span className="text-red-flag">HERO</span>
+        </a>
+      </p>
       <div className="flex justify-around py-4">
         <Button className="text-xxs" onClick={() => setOrderBy('st')}>Sort by state</Button>
         <Button className="text-xxs" onClick={() => setOrderBy('party')}>Sort by party</Button>
