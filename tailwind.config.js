@@ -53,6 +53,9 @@ module.exports = {
       '1/4': '25%',
       '1/3': `${(1/3) * 100}%`,
     },
+    opacity: {
+      '10': '0.1',
+    }
   },
   corePlugins: {},
   plugins: [],
