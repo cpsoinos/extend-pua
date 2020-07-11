@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import SenatorSocialInfoRow from '../SenatorSocialInfoRow/SenatorSocialInfoRow'
-import Button from '../Button/Button'
-import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
+import CongressPersonCard from '../../components/CongressPersonCard/CongressPersonCard'
+import Button from '../../components/Button/Button'
 import { SenatorSocialHandleRecord } from '../../types/SenatorSocialHandleResponse'
+import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
+// import { useSenateList } from '../../hooks/useSenateList'
 import { useBuildSocialInfo } from '../../hooks/useBuildSocialInfo'
 import sortBy from 'lodash/sortBy'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
   const { getSenatorSocialHandles } = useSenatorSocialHandles()
-  const { buildInstagram, buildFacebook, buildTwitter, buildEmailAndPhone } = useBuildSocialInfo()
+  // const { getSenateList } = useSenateList()
+  const { buildInstagram, buildFacebook, buildTwitter, buildEmail, buildPhone } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
+
+  // getSenateList().then(console.log)
 
   useEffect(() => {
     getSenatorSocialHandles().then((data) => {
@@ -39,22 +43,26 @@ const SenatorSocialHandles = () => {
         <Button className="text-xxs" onClick={() => setOrderBy('reElection')}>Sort by re-election</Button>
         <Button className="text-xxs" onClick={() => setOrderBy('last')}>Sort by name</Button>
       </div>
-      {senators.map((senator, i) => {
-        return (
-          <SenatorSocialInfoRow
-            key={i}
-            lastName={senator.last}
-            firstName={senator.first}
-            usState={senator.st}
-            party={senator.party}
-            upForReElection={+senator.reElection}
-            instagram={buildInstagram(senator)}
-            twitter={buildTwitter(senator)}
-            facebook={buildFacebook(senator)}
-            emailAndPhone={buildEmailAndPhone(senator)}
-          />
-        )
-      })}
+      <div className="space-y-4">
+        {senators.map((senator, i) => {
+          return (
+            <CongressPersonCard
+              key={i}
+              avatar={senator.avatar}
+              lastName={senator.last}
+              firstName={senator.first}
+              usState={senator.st}
+              party={senator.party}
+              upForReElection={+senator.reElection}
+              instagram={buildInstagram(senator)}
+              twitter={buildTwitter(senator)}
+              facebook={buildFacebook(senator)}
+              email={buildEmail(senator)}
+              phone={buildPhone(senator)}
+            />
+          )
+        })}
+      </div>
     </>
   )
 }

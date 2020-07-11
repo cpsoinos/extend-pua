@@ -1,15 +1,11 @@
 import React from 'react'
 import SocialHandleButton from './SocialHandleButton'
+import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {
   title: 'components/SocialHandleButton',
   component: SocialHandleButton,
-  parameters: {
-    backgrounds: [
-      { name: 'twitter', value: '#00aced', default: true },
-      { name: 'facebook', value: '#3b5998' },
-    ]
-  }
+  decorators: [withBaseStyles]
 }
 
 export const Instagram = () => {

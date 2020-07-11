@@ -25,11 +25,20 @@ export const useBuildSocialInfo = () => {
     }
   }
 
-  const buildEmailAndPhone = (senator: SenatorSocialHandleRecord) => {
+  const buildEmail = (senator: SenatorSocialHandleRecord) => {
     return {
-      platform: 'emailAndPhone',
-      handle: 'Email',
+      platform: 'email',
+      handle: senator.phoneNumber,
       url: 'https://www.extendpua.org/write',
+      phone: senator.phoneNumber
+    }
+  }
+
+  const buildPhone = (senator: SenatorSocialHandleRecord) => {
+    return {
+      platform: 'phone',
+      handle: senator.phoneNumber,
+      url: `tel:${senator.phoneNumber}`,
       phone: senator.phoneNumber
     }
   }
@@ -38,6 +47,7 @@ export const useBuildSocialInfo = () => {
     buildInstagram,
     buildFacebook,
     buildTwitter,
-    buildEmailAndPhone
+    buildEmail,
+    buildPhone
   }
 }
