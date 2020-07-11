@@ -112,7 +112,7 @@ const Button = (props: ButtonProps) => {
     onBlur,
     className: classes,
     style: {
-      '-webkit-appearance': 'button',
+      '-webkit-appearance': 'button-bevel',
       '-moz-appearance': 'button',
       appearance: 'button'
     }

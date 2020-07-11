@@ -13,3 +13,5 @@ export default {
 }
 
 export const Default = () => <Button>foo</Button>
+
+export const Link = () => <Button href="foo">foo</Button>
