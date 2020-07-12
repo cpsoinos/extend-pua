@@ -1,9 +1,6 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 import classNames from 'classnames'
-import { SocialHandleButtonProps } from '../SocialHandleButton/SocialHandleButton'
+import SocialHandleLink, { SocialHandleLinkProps } from '../SocialHandleLink/SocialHandleLink'
 
 export interface CongressPersonCardProps {
   avatar?: string,
@@ -12,14 +9,17 @@ export interface CongressPersonCardProps {
   party: string
   usState: string
   upForReElection: number
-  instagram: SocialHandleButtonProps
-  twitter: SocialHandleButtonProps
-  facebook: SocialHandleButtonProps
-  phone: SocialHandleButtonProps
+  instagram: SocialHandleLinkProps
+  twitter: SocialHandleLinkProps
+  facebook: SocialHandleLinkProps
+  phone: SocialHandleLinkProps
+  mail: SocialHandleLinkProps
 }
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
-  const { avatar, lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, phone } = props
+  const { avatar, lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, phone, mail } = props
+
+  const socialHandles = [facebook, twitter, instagram, phone, mail]
 
   const imageClasses = classNames(
     'h-auto',
@@ -48,48 +48,11 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
         </div>
 
         <ul>
-          <li className="truncate">
-            <a href={facebook.url} className="text-gray-900">
-              <FontAwesomeIcon className="mr-1" icon={faFacebook} fixedWidth />
-              <span className="tooltip">
-                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{facebook.handle}</span>
-                {facebook.handle}
-              </span>
-            </a>
-          </li>
-          <li className="truncate">
-            <a href={twitter.url} className="text-gray-900">
-              <FontAwesomeIcon className="mr-1" icon={faTwitter} fixedWidth />
-              <span className="tooltip">
-                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{twitter.handle}</span>
-                {twitter.handle}
-              </span>
-            </a>
-          </li>
-          <li className="truncate">
-            <a href={instagram.url} className="text-gray-900">
-              <FontAwesomeIcon className="mr-1" icon={faInstagram} fixedWidth />
-              <span className="tooltip">
-                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{instagram.handle}</span>
-                {instagram.handle}
-              </span>
-            </a>
-          </li>
-          <li className="truncate">
-            <a href={phone.url} className="text-gray-900">
-              <FontAwesomeIcon className="mr-1" icon={faPhone} fixedWidth />
-              <span className="tooltip">
-                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{phone.handle}</span>
-                {phone.handle}
-              </span>
-            </a>
-          </li>
-          <li className="truncate">
-            <a href="https://www.extendpua.org/write" className="text-gray-900">
-              <FontAwesomeIcon className="mr-1" icon={faMailBulk} fixedWidth />
-              Write your senator
-            </a>
-          </li>
+          {socialHandles.map((socialHandle) => (
+            <li className="truncate">
+              <SocialHandleLink {...socialHandle} />
+            </li>
+          ))}
         </ul>
       </div>
     </div>

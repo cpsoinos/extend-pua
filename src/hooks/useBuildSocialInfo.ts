@@ -1,11 +1,14 @@
 import { SenatorSocialHandleRecord } from '../types/SenatorSocialHandleResponse'
+import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 
 export const useBuildSocialInfo = () => {
   const buildInstagram = (senator: SenatorSocialHandleRecord) => {
     return {
       platform: 'instagram',
       handle: senator.igHandle,
-      url: senator.igLink
+      url: senator.igLink,
+      icon: faInstagram
     }
   }
 
@@ -13,7 +16,8 @@ export const useBuildSocialInfo = () => {
     return {
       platform: 'facebook',
       handle: senator.facebookPage,
-      url: senator.facebookLink
+      url: senator.facebookLink,
+      icon: faFacebook
     }
   }
 
@@ -21,16 +25,8 @@ export const useBuildSocialInfo = () => {
     return {
       platform: 'twitter',
       handle: senator.twitterHandle,
-      url: senator.twitterLink
-    }
-  }
-
-  const buildEmail = (senator: SenatorSocialHandleRecord) => {
-    return {
-      platform: 'email',
-      handle: senator.phoneNumber,
-      url: 'https://www.extendpua.org/write',
-      phone: senator.phoneNumber
+      url: senator.twitterLink,
+      icon: faTwitter
     }
   }
 
@@ -39,7 +35,16 @@ export const useBuildSocialInfo = () => {
       platform: 'phone',
       handle: senator.phoneNumber,
       url: `tel:${senator.phoneNumber}`,
-      phone: senator.phoneNumber
+      icon: faPhone
+    }
+  }
+
+  const buildMail = (_senator?: SenatorSocialHandleRecord) => {
+    return {
+      platform: 'mail',
+      handle: 'Write your senator',
+      url: 'https://www.extendpua.org/write',
+      icon: faMailBulk
     }
   }
 
@@ -47,7 +52,7 @@ export const useBuildSocialInfo = () => {
     buildInstagram,
     buildFacebook,
     buildTwitter,
-    buildEmail,
-    buildPhone
+    buildPhone,
+    buildMail
   }
 }

@@ -10,7 +10,7 @@ const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
   const [filteredSenators, filterSenators] = useState<SenatorSocialHandleRecord[]>([])
   const { getSenatorSocialHandles } = useSenatorSocialHandles()
-  const { buildInstagram, buildFacebook, buildTwitter, buildPhone } = useBuildSocialInfo()
+  const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildMail } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
   const { addDocuments, search } = useSearch()
 
@@ -88,6 +88,7 @@ const SenatorSocialHandles = () => {
               twitter={buildTwitter(senator)}
               facebook={buildFacebook(senator)}
               phone={buildPhone(senator)}
+              mail={buildMail(senator)}
             />
           )
         })}
