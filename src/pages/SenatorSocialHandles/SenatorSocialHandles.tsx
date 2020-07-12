@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CongressPersonCard from '../../components/CongressPersonCard/CongressPersonCard'
-import Button from '../../components/Button/Button'
 import { SenatorSocialHandleRecord } from '../../types/SenatorSocialHandleResponse'
 import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
 import { useBuildSocialInfo } from '../../hooks/useBuildSocialInfo'
@@ -24,6 +23,11 @@ const SenatorSocialHandles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderBy])
 
+  const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value
+    setOrderBy(value)
+  }
+
   return (
     <>
       <p className="text-center text-white leading-none">
@@ -34,11 +38,16 @@ const SenatorSocialHandles = () => {
         </a>
       </p>
 
-      <div className="flex justify-around py-4 space-x-1">
-        <Button className="text-xxs" onClick={() => setOrderBy('st')}>Sort by state</Button>
-        <Button className="text-xxs" onClick={() => setOrderBy('party')}>Sort by party</Button>
-        <Button className="text-xxs" onClick={() => setOrderBy('reElection')}>Sort by re-election</Button>
-        <Button className="text-xxs" onClick={() => setOrderBy('last')}>Sort by name</Button>
+      <div className="flex justify-end mx-2 my-2">
+        <label>
+          <span className="text-white mr-2">Order by:</span>
+          <select onChange={onChange}>
+            <option value="st">State</option>
+            <option value="party">Party</option>
+            <option value="reElection">Re-election</option>
+            <option value="last">Name</option>
+          </select>
+        </label>
       </div>
 
       <div className="flex flex-wrap">

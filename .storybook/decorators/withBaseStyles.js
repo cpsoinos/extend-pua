@@ -15,7 +15,7 @@ export default makeDecorator({
             <div className="absolute bg-fixed bg-cover bg-top w-full h-full opacity-10 bg-no-repeat" style={styles}></div>
           </div>
         </div>
-        <div className="relative max-w-lg container mx-auto py-4">
+        <div className="relative container mx-auto py-4">
           {WrappedComponent}
         </div>
       </div>
