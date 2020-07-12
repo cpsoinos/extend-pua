@@ -16,11 +16,10 @@ export interface CongressPersonCardProps {
   twitter: SocialHandleButtonProps
   facebook: SocialHandleButtonProps
   phone: SocialHandleButtonProps
-  email: SocialHandleButtonProps
 }
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
-  const { avatar, lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, email, phone } = props
+  const { avatar, lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, phone } = props
 
   const imageClasses = classNames(
     'h-auto',

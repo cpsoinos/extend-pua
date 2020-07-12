@@ -32,12 +32,6 @@ const phone = {
   url: 'tel:(555) 867-5309'
 }
 
-const email = {
-  platform: 'email',
-  handle: 'someone@somewhere.gov',
-  url: 'mailto:someone@somewhere.gov'
-}
-
 const props = {
   avatar: "https://www.congress.gov/img/member/115_sr_ca_harris_kamala_200.jpg",
   lastName: 'Harris',
@@ -49,7 +43,6 @@ const props = {
   facebook,
   twitter,
   phone,
-  email
 }
 
 export const Default = () => {

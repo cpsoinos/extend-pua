@@ -3,14 +3,14 @@ import CongressPersonCard from '../../components/CongressPersonCard/CongressPers
 import { SenatorSocialHandleRecord } from '../../types/SenatorSocialHandleResponse'
 import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
 import { useBuildSocialInfo } from '../../hooks/useBuildSocialInfo'
-import sortBy from 'lodash/sortBy'
 import { useSearch } from '../../hooks/useSearch'
+import sortBy from 'lodash/sortBy'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
   const [filteredSenators, filterSenators] = useState<SenatorSocialHandleRecord[]>([])
   const { getSenatorSocialHandles } = useSenatorSocialHandles()
-  const { buildInstagram, buildFacebook, buildTwitter, buildEmail, buildPhone } = useBuildSocialInfo()
+  const { buildInstagram, buildFacebook, buildTwitter, buildPhone } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
   const { addDocuments, search } = useSearch()
 
@@ -24,11 +24,11 @@ const SenatorSocialHandles = () => {
   }, [])
 
   useEffect(() => {
-    setSenators(sortBy(senators, orderBy))
+    filterSenators(sortBy(filteredSenators, orderBy))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderBy])
 
-  const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const onOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value
     setOrderBy(value)
   }
@@ -57,18 +57,20 @@ const SenatorSocialHandles = () => {
         </a>
       </p>
 
-      <div className="flex justify-between mx-2 my-2">
-        <input type="search" placeholder="Search..." onInput={onSearch}></input>
-
-        <label>
+      <div className="flex flex-wrap justify-between mx-2 mt-8 mb-6">
+        <label className="text-right">
           <span className="text-white mr-2">Order by:</span>
-          <select onChange={onChange}>
+          <select className="p-1 rounded-md" onChange={onOrderChange}>
             <option value="st">State</option>
             <option value="party">Party</option>
             <option value="reElection">Re-election</option>
             <option value="last">Name</option>
           </select>
         </label>
+
+        <div className="flex w-full sm:max-w-1/2 mb-2">
+          <input className="rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
+        </div>
       </div>
 
       <div className="flex flex-wrap">
@@ -85,7 +87,6 @@ const SenatorSocialHandles = () => {
               instagram={buildInstagram(senator)}
               twitter={buildTwitter(senator)}
               facebook={buildFacebook(senator)}
-              email={buildEmail(senator)}
               phone={buildPhone(senator)}
             />
           )
