@@ -5,6 +5,8 @@ import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
 import { useBuildSocialInfo } from '../../hooks/useBuildSocialInfo'
 import { useSearch } from '../../hooks/useSearch'
 import sortBy from 'lodash/sortBy'
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
@@ -49,7 +51,14 @@ const SenatorSocialHandles = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-between items-center mx-2 mt-8 mb-6">
+      <Header />
+
+      <div className="py-12">
+        <p className="text-white font-luloBold text-3xl leading-none">@ your senator</p>
+        <p className="text-red-flag font-luloBold text-xl leading-none">Take your message straight to them</p>
+      </div>
+
+      <div className="flex flex-wrap justify-between items-center mx-2 mt-4 mb-6">
         <label className="text-right mb-4 sm:mb-0">
           <span className="text-white mr-2">Order by:</span>
           <select className="p-1 rounded-md" onChange={onOrderChange}>
@@ -65,7 +74,7 @@ const SenatorSocialHandles = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap mb-20">
         {filteredSenators.map((senator, i) => {
           return (
             <CongressPersonCard
@@ -85,6 +94,7 @@ const SenatorSocialHandles = () => {
           )
         })}
       </div>
+      <Footer />
     </>
   )
 }

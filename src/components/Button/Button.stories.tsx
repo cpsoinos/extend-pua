@@ -1,11 +1,9 @@
 import React from 'react'
 import Button from './Button'
-import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {
   title: 'components/Button',
-  component: Button,
-  decorators: [withBaseStyles]
+  component: Button
 }
 
 export const Default = () => <Button>foo</Button>
