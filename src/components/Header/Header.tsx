@@ -1,14 +1,14 @@
 import React from 'react'
-import { ReactComponent as Logo } from '../../assets/ePUA_Logo.svg'
+import Logo from '../../assets/ePUA_Logo_Transparent.png'
 import Button from '../Button/Button'
 
 const Header = () => {
   return (
     <div>
       <Button href="https://www.extendpua.org/">
-        <Logo />
+        <img src={Logo} alt="Logo" />
       </Button>
-      <div className="text-center text-white">
+      <div className="text-center text-white mt-4">
         <p className="font-luloBold text-xs">PANDEMIC ASSISTANCE SHOULD CONTINUE UNTIL THE PANDEMIC IS OVER</p>
         <p className="font-lulo text-xxs italic">#MitchBetterHaveMyMoney | #ExtendPUA | #ExtendFPUC | #SaveThe600 @ExtendPUA</p>
       </div>
