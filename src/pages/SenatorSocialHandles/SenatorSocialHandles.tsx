@@ -33,6 +33,7 @@ const SenatorSocialHandles = () => {
           <span>@BE</span><span className="text-red-flag">AN</span>ARTS<span className="text-red-flag">HERO</span>
         </a>
       </p>
+
       <div className="flex justify-around py-4 space-x-1">
         <Button className="text-xxs" onClick={() => setOrderBy('st')}>Sort by state</Button>
         <Button className="text-xxs" onClick={() => setOrderBy('party')}>Sort by party</Button>
