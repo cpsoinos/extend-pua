@@ -29,7 +29,7 @@ const twitter = {
 const phone = {
   platform: 'phone',
   handle: '(555) 867-5309',
-  url: 'tel:5558675309'
+  url: 'tel:(555) 867-5309'
 }
 
 const email = {

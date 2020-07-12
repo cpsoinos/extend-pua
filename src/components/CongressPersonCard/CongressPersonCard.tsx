@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faPhone } from '@fortawesome/pro-regular-svg-icons'
+import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 import classNames from 'classnames'
 import { SocialHandleButtonProps } from '../SocialHandleButton/SocialHandleButton'
 
@@ -38,47 +38,57 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   )
 
   return (
-    <div className="flex w-full">
-      <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} width={200} />
+    <div className="flex w-full md:w-1/2 mb-4 px-0 sm:px-2 rounded-md">
+      <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} width={150} />
 
-      <div className="border border-gray-400 bg-white rounded-r p-4 leading-normal w-full overflow-auto">
-        <div className="mb-4">
-          <p className="text-sm text-gray-600 flex items-center font-lulo">
-            {usState} - {party}
-          </p>
-          <div className="text-gray-900 font-bold text-xl mb-2 font-luloBold">{firstName} {lastName}</div>
-          <p className="text-gray-700 text-xs italic">Up for re-election in {upForReElection}</p>
+      <div className="bg-white border border-gray-400 rounded-r p-2 leading-normal w-full overflow-auto">
+        <div className="mb-4 leading-tight">
+          <p className="text-sm text-gray-600 font-lulo">{usState} - {party}</p>
+          <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
+          <small className="text-gray-700 text-xs italic">Up for re-election in {upForReElection}</small>
         </div>
 
         <ul>
           <li className="truncate">
             <a href={facebook.url} className="text-gray-900">
               <FontAwesomeIcon className="mr-1" icon={faFacebook} fixedWidth />
-              {facebook.handle}
+              <span className="tooltip">
+                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{facebook.handle}</span>
+                {facebook.handle}
+              </span>
             </a>
           </li>
           <li className="truncate">
             <a href={twitter.url} className="text-gray-900">
               <FontAwesomeIcon className="mr-1" icon={faTwitter} fixedWidth />
-              {twitter.handle}
+              <span className="tooltip">
+                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{twitter.handle}</span>
+                {twitter.handle}
+              </span>
             </a>
           </li>
           <li className="truncate">
             <a href={instagram.url} className="text-gray-900">
               <FontAwesomeIcon className="mr-1" icon={faInstagram} fixedWidth />
-              {instagram.handle}
-            </a>
-          </li>
-          <li className="truncate">
-            <a href={email.url} className="text-gray-900">
-              <FontAwesomeIcon className="mr-1" icon={faEnvelope} fixedWidth />
-              {email.handle}
+              <span className="tooltip">
+                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{instagram.handle}</span>
+                {instagram.handle}
+              </span>
             </a>
           </li>
           <li className="truncate">
             <a href={phone.url} className="text-gray-900">
               <FontAwesomeIcon className="mr-1" icon={faPhone} fixedWidth />
-              {phone.handle}
+              <span className="tooltip">
+                <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{phone.handle}</span>
+                {phone.handle}
+              </span>
+            </a>
+          </li>
+          <li className="truncate">
+            <a href="https://www.extendpua.org/write" className="text-gray-900">
+              <FontAwesomeIcon className="mr-1" icon={faMailBulk} fixedWidth />
+              Write your senator
             </a>
           </li>
         </ul>

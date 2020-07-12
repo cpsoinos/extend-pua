@@ -3,18 +3,14 @@ import CongressPersonCard from '../../components/CongressPersonCard/CongressPers
 import Button from '../../components/Button/Button'
 import { SenatorSocialHandleRecord } from '../../types/SenatorSocialHandleResponse'
 import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
-// import { useSenateList } from '../../hooks/useSenateList'
 import { useBuildSocialInfo } from '../../hooks/useBuildSocialInfo'
 import sortBy from 'lodash/sortBy'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
   const { getSenatorSocialHandles } = useSenatorSocialHandles()
-  // const { getSenateList } = useSenateList()
   const { buildInstagram, buildFacebook, buildTwitter, buildEmail, buildPhone } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
-
-  // getSenateList().then(console.log)
 
   useEffect(() => {
     getSenatorSocialHandles().then((data) => {
@@ -43,7 +39,8 @@ const SenatorSocialHandles = () => {
         <Button className="text-xxs" onClick={() => setOrderBy('reElection')}>Sort by re-election</Button>
         <Button className="text-xxs" onClick={() => setOrderBy('last')}>Sort by name</Button>
       </div>
-      <div className="space-y-4">
+
+      <div className="flex flex-wrap">
         {senators.map((senator, i) => {
           return (
             <CongressPersonCard
