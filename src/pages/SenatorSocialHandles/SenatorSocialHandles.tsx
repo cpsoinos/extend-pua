@@ -49,14 +49,6 @@ const SenatorSocialHandles = () => {
 
   return (
     <>
-      <p className="text-center text-white leading-none">
-        Senate Social Handles List<br />
-        Courtesy JOE BEUMER,{' '}
-        <a className="underline" href="http://www.instagram.com/beanartshero">
-          <span>@BE</span><span className="text-red-flag">AN</span>ARTS<span className="text-red-flag">HERO</span>
-        </a>
-      </p>
-
       <div className="flex flex-wrap justify-between items-center mx-2 mt-8 mb-6">
         <label className="text-right mb-4 sm:mb-0">
           <span className="text-white mr-2">Order by:</span>
