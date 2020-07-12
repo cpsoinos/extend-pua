@@ -14,6 +14,17 @@ const Footer = () => {
         <p className="text-xxs font-sans mt-6">
           ExtendPUA.org is not a source of legal advice or counsel. All information contained on ExtendPUA.org is an educational tool and volunteer run organization. Where specific facts are referenced, every effort has been made to verify the accuracy and truthfulness of the information presented. Occasionally our information will become out of date because of the rapidly evolving nature of the movement. If you spot something out of place, please contact us at <Button href="mailto:Info@ExtendPUA.org">Info@ExtendPUA.org</Button>
         </p>
+        <p className="text-xxs font-sans mt-2">
+          Senate social handles list courtesy JOE BEUMER{' '}
+          <Button className="underline" href="http://www.instagram.com/beanartshero">
+            <>
+              <span>@BE</span><span className="text-red-flag">AN</span>ARTS<span className="text-red-flag">HERO</span>
+            </>
+          </Button>
+        </p>
+        <p className="text-xxs font-sans mt-2">
+          Designed and built with <span role="img" aria-label="heart emoji">♥️</span> by <Button className="underline" href="https://github.com/cpsoinos">Corey Psoinos</Button> in Brooklyn, NY
+        </p>
       </div>
       <div className="w-full max-w-1/3 text-right">
         <Button href="https://www.extendpua.org/donate" className="block text-blue-deep-sky underline text-xxs hover:text-white">Donate</Button>
