@@ -4,16 +4,21 @@ import { SenatorSocialHandleRecord } from '../../types/SenatorSocialHandleRespon
 import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
 import { useBuildSocialInfo } from '../../hooks/useBuildSocialInfo'
 import sortBy from 'lodash/sortBy'
+import { useSearch } from '../../hooks/useSearch'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
+  const [filteredSenators, filterSenators] = useState<SenatorSocialHandleRecord[]>([])
   const { getSenatorSocialHandles } = useSenatorSocialHandles()
   const { buildInstagram, buildFacebook, buildTwitter, buildEmail, buildPhone } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
+  const { addDocuments, search } = useSearch()
 
   useEffect(() => {
     getSenatorSocialHandles().then((data) => {
-      setSenators(sortBy(data, orderBy))
+      const sorted = sortBy(data, orderBy)
+      setSenators(sorted)
+      filterSenators(sorted)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -28,6 +33,20 @@ const SenatorSocialHandles = () => {
     setOrderBy(value)
   }
 
+  useEffect(() => {
+    if (senators.length) addDocuments(senators)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [senators])
+
+  const onSearch = (event: React.FormEvent<HTMLInputElement>) => {
+    const query = event.currentTarget.value
+    if (query === '') filterSenators(senators)
+    else {
+      const results = search(query) as SenatorSocialHandleRecord[]
+      filterSenators(results)
+    }
+  }
+
   return (
     <>
       <p className="text-center text-white leading-none">
@@ -38,7 +57,9 @@ const SenatorSocialHandles = () => {
         </a>
       </p>
 
-      <div className="flex justify-end mx-2 my-2">
+      <div className="flex justify-between mx-2 my-2">
+        <input type="search" placeholder="Search..." onInput={onSearch}></input>
+
         <label>
           <span className="text-white mr-2">Order by:</span>
           <select onChange={onChange}>
@@ -51,7 +72,7 @@ const SenatorSocialHandles = () => {
       </div>
 
       <div className="flex flex-wrap">
-        {senators.map((senator, i) => {
+        {filteredSenators.map((senator, i) => {
           return (
             <CongressPersonCard
               key={i}
