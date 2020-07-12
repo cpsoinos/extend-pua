@@ -3,6 +3,7 @@ export interface SenatorSocialHandlesResponse {
 }
 
 export interface SenatorSocialHandleRecord {
+    avatar?: string
     st:                                string;
     igCould?:                          string;
     phoneNumber:                       string;

@@ -1,15 +1,11 @@
 import React from 'react'
 import SenatorBasicInfo from './SenatorBasicInfo'
+import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {
   title: 'components/SenatorBasicInfo',
   component: SenatorBasicInfo,
-  parameters: {
-    backgrounds: [
-      { name: 'twitter', value: '#00aced', default: true },
-      { name: 'facebook', value: '#3b5998' },
-    ]
-  }
+  decorators: [withBaseStyles]
 }
 
 export const Default = () => {

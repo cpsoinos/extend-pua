@@ -1,5 +1,5 @@
 import React from 'react'
-import SenatorSocialHandles from './components/SenatorSocialHandles/SenatorSocialHandles'
+import SenatorSocialHandles from './pages/SenatorSocialHandles/SenatorSocialHandles'
 
 const App = () => {
   const styles = {
@@ -7,9 +7,9 @@ const App = () => {
   }
 
   return (
-    <div className="relative font-luloBold">
+    <div className="relative">
       <div className="absolute">
-        <div className="fixed bg-blue-deep-sky h-full w-full">
+        <div className="fixed bg-background-black h-full w-full">
           <div className="absolute bg-fixed bg-cover bg-top w-full h-full opacity-10 bg-no-repeat" style={styles}></div>
         </div>
       </div>

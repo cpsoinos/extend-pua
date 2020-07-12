@@ -1,15 +1,11 @@
 import React from 'react'
 import Button from './Button'
+import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {
   title: 'components/Button',
   component: Button,
-  parameters: {
-    backgrounds: [
-      { name: 'twitter', value: '#00aced', default: true },
-      { name: 'facebook', value: '#3b5998' },
-    ]
-  }
+  decorators: [withBaseStyles]
 }
 
 export const Default = () => <Button>foo</Button>
