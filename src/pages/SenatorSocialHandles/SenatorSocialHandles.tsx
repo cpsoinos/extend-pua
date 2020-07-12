@@ -58,7 +58,7 @@ const SenatorSocialHandles = () => {
       </p>
 
       <div className="flex flex-wrap justify-between mx-2 mt-8 mb-6">
-        <label className="text-right">
+        <label className="text-right mb-2">
           <span className="text-white mr-2">Order by:</span>
           <select className="p-1 rounded-md" onChange={onOrderChange}>
             <option value="st">State</option>
@@ -68,7 +68,7 @@ const SenatorSocialHandles = () => {
           </select>
         </label>
 
-        <div className="flex w-full sm:max-w-1/2 mb-2">
+        <div className="flex w-full sm:max-w-1/2">
           <input className="rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
       </div>
