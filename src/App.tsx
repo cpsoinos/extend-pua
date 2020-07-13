@@ -1,5 +1,5 @@
 import React from 'react'
-import SenatorSocialHandles from './pages/SenatorSocialHandles/SenatorSocialHandles'
+import SenatorSocialHandles from 'pages/SenatorSocialHandles/SenatorSocialHandles'
 
 const App = () => {
   const styles = {

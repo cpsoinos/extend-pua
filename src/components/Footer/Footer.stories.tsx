@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './Footer'
+import Footer from 'components/Footer/Footer'
 import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {

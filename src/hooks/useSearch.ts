@@ -1,6 +1,6 @@
 import * as JsSearch from 'js-search'
 import { useState } from 'react'
-import { SenatorSocialHandleRecord } from '../types/SenatorSocialHandleResponse'
+import { SenatorSocialHandleRecord } from 'types/SenatorSocialHandleResponse'
 
 export const useSearch = () => {
   const [searchIndex,] = useState(new JsSearch.Search('_id'))

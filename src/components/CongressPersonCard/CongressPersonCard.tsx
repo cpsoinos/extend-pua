@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import SocialHandleLink, { SocialHandleLinkProps } from '../SocialHandleLink/SocialHandleLink'
+import SocialHandleLink, { SocialHandleLinkProps } from 'components/SocialHandleLink/SocialHandleLink'
 
 export interface CongressPersonCardProps {
   avatar?: string,

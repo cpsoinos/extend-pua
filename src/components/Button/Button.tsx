@@ -1,6 +1,6 @@
 import React from 'react'
-import { BaseProps } from '../../types/BaseProps'
-import { pickBy } from '../../util/pickBy'
+import { BaseProps } from 'types/BaseProps'
+import { pickBy } from 'util/pickBy'
 import classNames from 'classnames'
 
 export interface ButtonProps extends BaseProps {

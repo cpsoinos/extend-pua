@@ -1,6 +1,6 @@
 import React from 'react'
-import Logo from '../../assets/ePUA_Logo_Transparent.png'
-import Button from '../Button/Button'
+import Logo from 'assets/ePUA_Logo_Transparent.png'
+import Button from 'components/Button/Button'
 
 const Header = () => {
   return (

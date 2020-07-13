@@ -1,4 +1,4 @@
-import { pickBy } from './pickBy'
+import { pickBy } from 'util/pickBy'
 
 interface PickByTestObject {
   foo: string

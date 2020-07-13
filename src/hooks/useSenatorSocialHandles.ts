@@ -1,5 +1,5 @@
-import { SenatorSocialHandlesResponse } from '../types/SenatorSocialHandleResponse'
-import senatorImages from '../assets/senatorImages.json'
+import { SenatorSocialHandlesResponse } from 'types/SenatorSocialHandleResponse'
+import senatorImages from 'assets/senatorImages.json'
 
 export const useSenatorSocialHandles = () => {
   const getSenatorSocialHandles = async () => {
