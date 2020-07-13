@@ -1,5 +1,5 @@
 import React from 'react'
-import SocialHandleLink from './SocialHandleLink'
+import SocialHandleLink from 'components/SocialHandleLink/SocialHandleLink'
 import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 

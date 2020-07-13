@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import CongressPersonCard from '../../components/CongressPersonCard/CongressPersonCard'
-import { SenatorSocialHandleRecord } from '../../types/SenatorSocialHandleResponse'
-import { useSenatorSocialHandles } from '../../hooks/useSenatorSocialHandles'
-import { useBuildSocialInfo } from '../../hooks/useBuildSocialInfo'
-import { useSearch } from '../../hooks/useSearch'
+import Header from 'components/Header/Header'
+import Footer from 'components/Footer/Footer'
+import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
+import { SenatorSocialHandleRecord } from 'types/SenatorSocialHandleResponse'
+import { useSenatorSocialHandles } from 'hooks/useSenatorSocialHandles'
+import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
+import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])

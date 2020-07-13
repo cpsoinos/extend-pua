@@ -1,5 +1,5 @@
 import React from 'react'
-import CongressPersonCard from './CongressPersonCard'
+import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
 import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'

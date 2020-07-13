@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../Button/Button'
+import Button from 'components/Button/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 

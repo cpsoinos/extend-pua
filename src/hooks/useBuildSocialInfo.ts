@@ -1,4 +1,4 @@
-import { SenatorSocialHandleRecord } from '../types/SenatorSocialHandleResponse'
+import { SenatorSocialHandleRecord } from 'types/SenatorSocialHandleResponse'
 import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 

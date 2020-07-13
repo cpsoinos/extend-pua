@@ -1,5 +1,5 @@
 import React from 'react'
-import SenatorSocialHandles from './SenatorSocialHandles'
+import SenatorSocialHandles from 'pages/SenatorSocialHandles/SenatorSocialHandles'
 import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {
