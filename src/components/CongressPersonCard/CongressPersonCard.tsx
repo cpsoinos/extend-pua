@@ -22,29 +22,46 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   const socialHandles = [facebook, twitter, instagram, phone, mail]
 
   const imageClasses = classNames(
-    'h-auto',
+    'sm:h-auto',
     'flex-none',
-    'rounded-t-none',
-    'rounded-l',
+    'rounded-tl',
+    'sm:rounded-br-none',
+    'sm:rounded-bl',
     'object-cover',
     'overflow-hidden',
-    'border-l-8',
+    'border-b-8',
+    'sm:border-b-0',
+    'sm:border-l-8',
+    'w-32',
+    'sm:w-full',
     {
       'border-background-blue': party === 'D',
       'border-red-flag': party === 'R',
-      'border-gray-500': party === '***'
+      'border-gray-400': party === 'I***'
     }
   )
 
-  return (
-    <div className="flex w-full md:w-1/2 mb-4 px-0 sm:px-2 rounded-md">
-      <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} width={150} />
+  const nextToImageClasses = classNames('flex', 'flex-col', 'justify-center', 'sm:hidden', 'w-full', 'rounded-tr', 'p-6', {
+    'text-white bg-red-flag': party === 'R',
+    'text-white bg-background-blue': party === 'D',
+    'text-black bg-gray-400': party === 'I***'
+  })
 
-      <div className="bg-white border border-gray-400 rounded-r p-2 leading-normal w-full overflow-auto">
+  return (
+    <div className="sm:flex w-full md:w-1/2 mb-4 px-0 sm:px-2 sm:rounded-md rounded-t">
+      <div className="flex bg-white rounded-t rounded-l">
+        <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} width={150} />
+        <div className={nextToImageClasses}>
+          <p className="text-sm font-lulo">{usState} - {party}</p>
+          <p className="text-xs italic leading-tight mt-4">Up for re-election <br />in {upForReElection}</p>
+        </div>
+      </div>
+
+      <div className="bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
         <div className="mb-4 leading-tight">
-          <p className="text-sm text-gray-600 font-lulo">{usState} - {party}</p>
+          <p className="hidden sm:inline-block text-sm text-gray-600 font-lulo">{usState} - {party}</p>
           <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
-          <small className="text-gray-700 text-xs italic">Up for re-election in {upForReElection}</small>
+          <small className="hidden sm:inline-block text-gray-700 text-xs italic">Up for re-election in {upForReElection}</small>
         </div>
 
         <ul>

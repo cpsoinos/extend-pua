@@ -9,8 +9,8 @@
     "eject": "react-scripts eject",
     "storybook": "yarn run watch:css && start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "build:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/main.css",
+    "watch:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/main.css"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",

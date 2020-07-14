@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
-import { SenatorSocialHandleRecord } from 'types/SenatorSocialHandleResponse'
+import { SenatorSocialHandleRecord } from "types/SenatorSocialHandleRecord"
 import { useSenatorSocialHandles } from 'hooks/useSenatorSocialHandles'
 import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
+import Switch from 'components/Switch/Switch'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
@@ -49,6 +50,18 @@ const SenatorSocialHandles = () => {
     }
   }
 
+  const onFilteredToKeyStates = (toggle: boolean) => {
+    if (toggle) {
+      const keyStates = ['KY', 'SC', 'OH', 'FL', 'NC', 'PA', 'WI', 'AZ', 'NY', 'ME']
+      const filtered = senators.filter((senator) => {
+        return keyStates.includes(senator.st) && senator.party === 'R'
+      })
+      filterSenators(filtered)
+    } else {
+      filterSenators(senators)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -59,18 +72,24 @@ const SenatorSocialHandles = () => {
       </div>
 
       <div className="flex flex-wrap justify-between items-center mx-2 mt-4 mb-6">
-        <label className="text-right mb-4 sm:mb-0">
-          <span className="text-white mr-2">Order by:</span>
-          <select className="p-1 rounded-md" onChange={onOrderChange}>
-            <option value="st">State</option>
-            <option value="party">Party</option>
-            <option value="reElection">Re-election</option>
-            <option value="last">Name</option>
-          </select>
-        </label>
+        <div className="flex justify-center">
+          <label className="text-right mb-4 sm:mb-0">
+            <span className="text-white mr-2">Order by:</span>
+            <select className="p-1 rounded-md" onChange={onOrderChange}>
+              <option value="st">State</option>
+              <option value="party">Party</option>
+              <option value="reElection">Re-election</option>
+              <option value="last">Name</option>
+            </select>
+          </label>
+        </div>
 
         <div className="flex w-full sm:max-w-1/2">
           <input className="rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
+        </div>
+
+        <div className="flex w-full justify-end">
+          <Switch className="text-white mt-4" label="Show only key states" name="filter_to_key_states" onChange={onFilteredToKeyStates} />
         </div>
       </div>
 
