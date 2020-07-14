@@ -11,30 +11,35 @@ export default {
 }
 
 const instagram = {
+  platform: 'instagram',
   handle: '@KamalaHarris',
   url: 'instagram.com/kamalaharris',
   icon: faInstagram
 }
 
 const facebook = {
+  platform: 'facebook',
   handle: 'KamalaHarris',
   url: 'facebook.com/kamalaharris',
   icon: faFacebook
 }
 
 const twitter = {
+  platform: 'twitter',
   handle: '@KamalaHarris',
   url: 'twitter.com/kamalaharris',
   icon: faTwitter
 }
 
 const phone = {
+  platform: 'phone',
   handle: '(555) 867-5309',
   url: 'tel:(555) 867-5309',
   icon: faPhone
 }
 
 const mail = {
+  platform: 'mail',
   handle: '(555) 867-5309',
   url: 'tel:(555) 867-5309',
   icon: faMailBulk
