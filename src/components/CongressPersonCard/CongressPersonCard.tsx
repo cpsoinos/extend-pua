@@ -32,7 +32,6 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     'border-b-8',
     'sm:border-b-0',
     'sm:border-l-8',
-    'h-32',
     'w-32',
     'sm:w-full',
     {
