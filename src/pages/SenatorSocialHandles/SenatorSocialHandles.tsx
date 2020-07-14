@@ -67,7 +67,7 @@ const SenatorSocialHandles = () => {
       <Header />
 
       <div className="py-12">
-        <p className="text-white font-luloBold text-3xl leading-none">@ your senator</p>
+        <p className="text-white font-luloBold text-3xl">@ your senator</p>
         <p className="text-red-flag font-luloBold text-xl leading-none">Take your message straight to them</p>
       </div>
 
