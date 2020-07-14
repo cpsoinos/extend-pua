@@ -32,7 +32,6 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     'border-b-8',
     'sm:border-b-0',
     'sm:border-l-8',
-    'w-32',
     'sm:w-full',
     {
       'border-background-blue': party === 'D',
@@ -50,9 +49,9 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   return (
     <div className="sm:flex w-full md:w-1/2 mb-4 px-0 sm:px-2 sm:rounded-md rounded-t">
       <div className="flex bg-white rounded-t rounded-l">
-        <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} width={150} />
+        <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} />
         <div className={nextToImageClasses}>
-          <p className="text-sm font-lulo">{usState} - {party}</p>
+          <p className="font-luloBold">{usState} - {party}</p>
           <p className="text-xs italic leading-tight mt-4">Up for re-election <br />in {upForReElection}</p>
         </div>
       </div>
