@@ -41,11 +41,17 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     }
   )
 
+  const nextToImageClasses = classNames('flex', 'flex-col', 'justify-center', 'sm:hidden', 'w-full', 'rounded-tr', 'p-6', {
+    'bg-red-flag': party === 'R',
+    'bg-background-blue': party === 'D',
+    'border-gray-500': party === '***'
+  })
+
   return (
     <div className="sm:flex w-full md:w-1/2 mb-4 px-0 sm:px-2 sm:rounded-md rounded-t">
       <div className="flex bg-white rounded-t rounded-l">
         <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} width={150} />
-        <div className="flex flex-col justify-center sm:hidden bg-red-flag w-full rounded-tr p-6">
+        <div className={nextToImageClasses}>
           <p className="text-sm text-white font-lulo">{usState} - {party}</p>
           <p className="text-white text-xs italic leading-tight mt-4">Up for re-election <br />in {upForReElection}</p>
         </div>
