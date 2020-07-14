@@ -73,7 +73,6 @@ const SenatorSocialHandles = () => {
 
       <div className="flex flex-wrap justify-between items-center mx-2 mt-4 mb-6">
         <div className="flex justify-center">
-          <Switch className="text-white" label="Show key states" name="filter_to_key_states" onChange={onFilteredToKeyStates} />
           <label className="text-right mb-4 sm:mb-0">
             <span className="text-white mr-2">Order by:</span>
             <select className="p-1 rounded-md" onChange={onOrderChange}>
@@ -87,6 +86,10 @@ const SenatorSocialHandles = () => {
 
         <div className="flex w-full sm:max-w-1/2">
           <input className="rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
+        </div>
+
+        <div className="flex w-full justify-end">
+          <Switch className="text-white mt-4" label="Show only key states" name="filter_to_key_states" onChange={onFilteredToKeyStates} />
         </div>
       </div>
 

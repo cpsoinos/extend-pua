@@ -31,6 +31,7 @@ const Switch = (props: SwitchProps) => {
 
   return (
     <label className={labelClasses}>
+      <span>{label}</span>
       <div className={wrapperClasses}>
         <input
           type="checkbox"
@@ -48,7 +49,6 @@ const Switch = (props: SwitchProps) => {
           className="absolute bg-gray-200 inset-0 z-10 w-full rounded-full transition-all duration-300"
         ></div>
       </div>
-      <span>{label}</span>
     </label>
   )
 }
