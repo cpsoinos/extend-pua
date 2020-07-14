@@ -64,8 +64,8 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
         </div>
 
         <ul>
-          {socialHandles.map((socialHandle) => (
-            <li className="truncate">
+          {socialHandles.map((socialHandle, i) => (
+            <li className="truncate" key={i}>
               <SocialHandleLink {...socialHandle} />
             </li>
           ))}
