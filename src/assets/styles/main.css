@@ -606,7 +606,61 @@ video {
   }
 }
 
-@import './fonts.css';
+@font-face {
+  font-family: 'Lulo Clean W01 One Bold';
+
+  src: local('Lulo Clean W01 One Bold'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lulo Clean W01 One';
+
+  src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
+}
+
+.switch__knob:before {
+  content: attr(content-off);
+  top: 3px;
+  left: 4px;
+  right: auto;
+  padding: 5px 0px;
+  position: absolute;
+  width: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+  --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity));
+  --bg-opacity: 1;
+  background-color: #cbd5e0;
+  background-color: rgba(203, 213, 224, var(--bg-opacity));
+  border-radius: 9999px;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switch__knob--small:before {
+  padding: 1px 0px;
+}
+
+.switch__knob--large:before {
+  padding: 9px 0px;
+}
+
+.switch__input:checked + .switch__knob:before {
+  content: attr(content-on);
+  /* knob is 40px wide, so equivalent to `right: 4px;` but this applies the transition */
+  left: calc(100% - 44px);
+  --bg-opacity: 1;
+  background-color: #00b3ff;
+  background-color: rgba(0, 179, 255, var(--bg-opacity));
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
 
 .tooltip .tooltip-text {
   visibility: hidden;

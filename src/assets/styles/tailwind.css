@@ -1,0 +1,63 @@
+@tailwind base;
+
+@tailwind components;
+
+@font-face {
+  font-family: 'Lulo Clean W01 One Bold';
+  src: local('Lulo Clean W01 One Bold'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lulo Clean W01 One';
+  src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
+}
+
+.switch__knob:before {
+  content: attr(content-off);
+  top: 3px;
+  left: 4px;
+  right: auto;
+  padding: 5px 0px;
+  @apply absolute;
+  @apply w-10;
+  @apply text-sm;
+  @apply font-bold;
+  @apply text-center;
+  @apply leading-none;
+  @apply text-gray-700;
+  @apply bg-gray-400;
+  @apply rounded-full;
+  @apply transition-all;
+  @apply duration-300;
+  @apply ease-in-out;
+}
+
+.switch__knob--small:before {
+  padding: 1px 0px;
+}
+
+.switch__knob--large:before {
+  padding: 9px 0px;
+}
+
+.switch__input:checked + .switch__knob:before {
+  content: attr(content-on);
+  /* knob is 40px wide, so equivalent to `right: 4px;` but this applies the transition */
+  left: calc(100% - 44px);
+  @apply bg-blue-deep-sky;
+  @apply text-white;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  text-align: center;
+  padding: 2px 6px;
+  position: absolute;
+  z-index: 100;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+@tailwind utilities;

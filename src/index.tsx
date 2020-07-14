@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'assets/fonts/FontsFree-Net-Lulo-Clean-W01-One-Bold.ttf'
 import 'assets/fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf'
-import 'assets/main.css'
+import 'assets/styles/main.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
