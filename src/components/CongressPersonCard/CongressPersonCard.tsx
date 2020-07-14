@@ -37,14 +37,14 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     {
       'border-background-blue': party === 'D',
       'border-red-flag': party === 'R',
-      'border-gray-500': party === '***'
+      'border-gray-400': party === 'I***'
     }
   )
 
   const nextToImageClasses = classNames('flex', 'flex-col', 'justify-center', 'sm:hidden', 'w-full', 'rounded-tr', 'p-6', {
-    'bg-red-flag': party === 'R',
-    'bg-background-blue': party === 'D',
-    'border-gray-500': party === '***'
+    'text-white bg-red-flag': party === 'R',
+    'text-white bg-background-blue': party === 'D',
+    'text-black bg-gray-400': party === 'I***'
   })
 
   return (
@@ -52,8 +52,8 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
       <div className="flex bg-white rounded-t rounded-l">
         <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} width={150} />
         <div className={nextToImageClasses}>
-          <p className="text-sm text-white font-lulo">{usState} - {party}</p>
-          <p className="text-white text-xs italic leading-tight mt-4">Up for re-election <br />in {upForReElection}</p>
+          <p className="text-sm font-lulo">{usState} - {party}</p>
+          <p className="text-xs italic leading-tight mt-4">Up for re-election <br />in {upForReElection}</p>
         </div>
       </div>
 
