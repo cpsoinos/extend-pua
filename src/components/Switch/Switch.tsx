@@ -46,7 +46,7 @@ const Switch = (props: SwitchProps) => {
           content-off={knobLabels.off}
         ></div>
         <div
-          className="absolute bg-gray-200 inset-0 z-10 w-full rounded-full transition-all duration-300"
+          className="absolute bg-white inset-0 z-10 w-full rounded-full transition-all duration-300"
         ></div>
       </div>
     </label>
