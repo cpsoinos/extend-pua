@@ -49,7 +49,7 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   return (
     <div className="sm:flex w-full md:w-1/2 mb-4 px-0 sm:px-2 sm:rounded-md rounded-t">
       <div className="flex bg-white rounded-t rounded-l">
-        <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} />
+        <img className={imageClasses} loading="lazy" src={avatar} alt={`Senator ${lastName} ${firstName}`} />
         <div className={nextToImageClasses}>
           <p className="font-luloBold">{usState} - {party}</p>
           <p className="text-xs italic leading-tight mt-4">Up for re-election <br />in {upForReElection}</p>
