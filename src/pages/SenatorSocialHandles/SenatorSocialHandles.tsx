@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from 'components/Header/Header'
-import Footer from 'components/Footer/Footer'
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
 import { SenatorSocialHandleRecord } from "types/SenatorSocialHandleRecord"
 import { useSenatorSocialHandles } from 'hooks/useSenatorSocialHandles'
@@ -64,8 +62,6 @@ const SenatorSocialHandles = () => {
 
   return (
     <>
-      <Header />
-
       <div className="py-12">
         <p className="text-white font-luloBold text-3xl">@ your senator</p>
         <p className="text-red-flag font-luloBold text-xl leading-none">Take your message straight to them</p>
@@ -113,7 +109,6 @@ const SenatorSocialHandles = () => {
           )
         })}
       </div>
-      <Footer />
     </>
   )
 }

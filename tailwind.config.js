@@ -22,6 +22,13 @@ module.exports = {
       blue: {
         ...colors.blue,
         'deep-sky': '#00b3ff',
+        'tier-6': '#0012FF',
+        'tier-5': '#005BFF',
+        'tier-4': '#0098FF',
+        'tier-3': '#08BAFF',
+        'tier-2': '#4AD5FF',
+        'tier-1': '#A3EAFF',
+        'tier-0': '#DEF1F7'
       },
       background: {
         black: '#101317',

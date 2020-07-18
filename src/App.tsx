@@ -1,5 +1,14 @@
 import React from 'react'
+import Header from 'components/Header/Header'
+import Footer from 'components/Footer/Footer'
 import SenatorSocialHandles from 'pages/SenatorSocialHandles/SenatorSocialHandles'
+import StatesList from 'pages/StatesList/StatesList'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
 
 const App = () => {
   const styles = {
@@ -14,8 +23,34 @@ const App = () => {
         </div>
       </div>
       <div className="relative container mx-auto py-4 px-2">
-        <SenatorSocialHandles />
+        <Header />
+        <Router>
+          <div className="text-white">
+            <nav className="my-6">
+              <ul>
+                <li>
+                  <Link to="/handles">Senator Social Handles</Link>
+                </li>
+                <li>
+                  <Link to="/states">AWRA States</Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* A <Switch> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+            <Switch>
+              <Route path="/handles">
+                <SenatorSocialHandles />
+              </Route>
+              <Route path="/states">
+                <StatesList />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </div>
+      <Footer />
     </div>
   )
 }
