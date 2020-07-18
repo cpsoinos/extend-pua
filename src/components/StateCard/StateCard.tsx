@@ -22,8 +22,8 @@ const StateCard = (props: StateCardProps) => {
     'text-blue-tier-5': usState.tier === 'Tier 5',
     'text-blue-tier-6': usState.tier === 'Tier 6',
   })
-  const pathToSvg = `components/StateSVGs/${capitalize(usState.state)}`
-  const StateSVG = lazy(() => import(pathToSvg))
+  const componentFileName = capitalize(usState.state)
+  const StateSVG = lazy(() => import(`components/StateSVGs/${componentFileName}`))
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-2 md:px-4 py-2">
