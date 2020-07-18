@@ -13,9 +13,10 @@ const SenatorSocialHandles = () => {
   const { getSenatorSocialHandles } = useSenatorSocialHandles()
   const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildMail } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
-  const { addDocuments, search } = useSearch()
+  const { addIndex, addDocuments, search } = useSearch()
 
   useEffect(() => {
+    ['st', 'first', 'last', 'party', 'reElection'].map(addIndex)
     getSenatorSocialHandles().then((data) => {
       const sorted = sortBy(data, orderBy)
       setSenators(sorted)
@@ -60,6 +61,13 @@ const SenatorSocialHandles = () => {
     }
   }
 
+  const sortOptions = [
+    { value: 'st', text: 'State' },
+    { value: 'party', text: 'Party' },
+    { value: 'reElection', text: 'Re-election' },
+    { value: 'last', text: 'Name' },
+  ]
+
   return (
     <>
       <div className="py-12">
@@ -71,17 +79,16 @@ const SenatorSocialHandles = () => {
         <div className="flex justify-center">
           <label className="text-right mb-4 sm:mb-0">
             <span className="text-white mr-2">Order by:</span>
-            <select className="p-1 rounded-md" onChange={onOrderChange}>
-              <option value="st">State</option>
-              <option value="party">Party</option>
-              <option value="reElection">Re-election</option>
-              <option value="last">Name</option>
+            <select className="text-gray-900 p-1 rounded-md" onChange={onOrderChange}>
+              {sortOptions.map((sortOption, i) => {
+                return <option key={i} value={sortOption.value}>{sortOption.text}</option>
+              })}
             </select>
           </label>
         </div>
 
         <div className="flex w-full sm:max-w-1/2">
-          <input className="rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
+          <input className="text-gray-900 rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
 
         <div className="flex w-full justify-end">
