@@ -1,8 +1,9 @@
 import React, { Suspense, lazy } from 'react'
 import { AWRAState } from 'types/AWRAState'
-import { capitalize } from 'lodash'
+import capitalize from 'lodash/capitalize'
 import { useUsStates } from 'hooks/useUsStates'
 import { formatCurrency } from 'util/formatCurrency'
+import classNames from 'classnames'
 
 interface StateCardProps {
   usState: AWRAState;
@@ -12,7 +13,15 @@ const StateCard = (props: StateCardProps) => {
   const { usState } = props
   const { fullStateName, weeklyLivingWage } = useUsStates()
 
-  const usStateClassName = `text-blue-${usState.tier.replace(' ', '-').toLowerCase()}`
+  const usStateClassName = classNames({
+    'text-blue-tier-0': usState.tier === 'No Tier',
+    'text-blue-tier-1': usState.tier === 'Tier 1',
+    'text-blue-tier-2': usState.tier === 'Tier 2',
+    'text-blue-tier-3': usState.tier === 'Tier 3',
+    'text-blue-tier-4': usState.tier === 'Tier 4',
+    'text-blue-tier-5': usState.tier === 'Tier 5',
+    'text-blue-tier-6': usState.tier === 'Tier 6',
+  })
   const StateSVG = lazy(() => import(`components/StateSVGs/${capitalize(usState.state)}`))
 
   return (
