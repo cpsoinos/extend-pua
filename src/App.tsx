@@ -7,7 +7,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from "react-router-dom"
 
 const App = () => {
@@ -29,10 +29,13 @@ const App = () => {
             <nav className="my-6">
               <ul>
                 <li>
-                  <Link to="/handles">Senator Social Handles</Link>
+                  <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
-                  <Link to="/states">AWRA States</Link>
+                  <NavLink to="/handles">Senator Social Handles</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/awra-states">AWRA States</NavLink>
                 </li>
               </ul>
             </nav>
@@ -43,7 +46,7 @@ const App = () => {
               <Route path="/handles">
                 <SenatorSocialHandles />
               </Route>
-              <Route path="/states">
+              <Route path="/awra-states">
                 <StatesList />
               </Route>
             </Switch>
