@@ -9,3 +9,5 @@ export default {
 }
 
 export const Default = () => <StatesList />
+
+export const Without3moAvgAndAdditionalFunding = () => <StatesList hide3moAvg={true} hideAdditionalFunding={true} />

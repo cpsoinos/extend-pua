@@ -6,11 +6,13 @@ import { formatCurrency } from 'util/formatCurrency'
 import classNames from 'classnames'
 
 interface StateCardProps {
-  usState: AWRAState;
+  usState: AWRAState
+  hide3moAvg?: boolean
+  hideAdditionalFunding?: boolean
 }
 
 const StateCard = (props: StateCardProps) => {
-  const { usState } = props
+  const { usState, hide3moAvg = false, hideAdditionalFunding = false } = props
   const { fullStateName, weeklyLivingWage } = useUsStates()
 
   const usStateClassName = classNames({
@@ -58,8 +60,12 @@ const StateCard = (props: StateCardProps) => {
           <h4 className="text-sm font-luloBold">Unemployment Rate</h4>
           <div className="w-full">
             <dl className="w-full">
-              <dt className="inline-block w-3/4">3-Month average:</dt>
-              <dd className="inline-block w-1/4 text-right">{usState.monthAverage}%</dd>
+              {!hide3moAvg && (
+                <>
+                  <dt className="inline-block w-3/4">3-Month average:</dt>
+                  <dd className="inline-block w-1/4 text-right">{usState.monthAverage}%</dd>
+                </>
+              )}
               <dt className="inline-block w-3/4">Current:</dt>
               <dd className="inline-block w-1/4 text-right">{usState.currentUeRate}%</dd>
             </dl>
@@ -72,8 +78,12 @@ const StateCard = (props: StateCardProps) => {
             <dl className="w-full">
               <dt className="inline-block w-3/4">State max:</dt>
               <dd className="inline-block w-1/4 text-right">{formatCurrency( usState.stateMaxUnemploymentPayout)}</dd>
-              <dt className="inline-block w-3/4">Additional FPUC under AWFR Act:</dt>
-              <dd className="inline-block w-1/4 text-right">{formatCurrency( usState.additionalFpucUnderAwfrAct)}</dd>
+              {!hideAdditionalFunding && (
+                <>
+                  <dt className="inline-block w-3/4">Additional FPUC under AWFR Act:</dt>
+                  <dd className="inline-block w-1/4 text-right">{formatCurrency( usState.additionalFpucUnderAwfrAct)}</dd>
+                </>
+              )}
               <dt className="inline-block w-3/4">Weekly living wage:</dt>
               <dd className="inline-block w-1/4 text-right">{formatCurrency( weeklyLivingWage(usState.state))}</dd>
             </dl>

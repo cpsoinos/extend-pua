@@ -5,7 +5,14 @@ import StateCard from 'components/StateCard/StateCard'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
 
-const StatesList = () => {
+interface StatesListProps {
+  hide3moAvg?: boolean
+  hideAdditionalFunding?: boolean
+}
+
+const StatesList = (props: StatesListProps) => {
+  const { hide3moAvg = false, hideAdditionalFunding = false } = props
+
   const [states, setStates] = useState<AWRAState[]>([])
   const [filteredStates, filterStates] = useState<AWRAState[]>([])
   const { getAWRAStates } = useAWRAStates()
@@ -50,12 +57,12 @@ const StatesList = () => {
     { value: 'state', text: 'State name' },
     { value: 'tier', text: 'Tier' },
     { value: 'currentUeRate', text: 'Current unemployment rate' },
-    { value: 'monthAverage', text: '3-month avgerage unemployment rate' },
     { value: 'prepandemicUePopulation', text: 'Pre-pandemic unemployment population' },
     { value: 'juneUePopulation', text: 'June unemployment population' },
     { value: 'stateMaxUnemploymentPayout', text: 'State maximum unemployment payout' },
-    { value: 'additionalFpucUnderAwfrAct', text: 'Additional FPUC Under AWFR Act' },
   ]
+  if (!hide3moAvg) sortOptions.push({ value: 'monthAverage', text: '3-month avgerage unemployment rate' })
+  if (!hideAdditionalFunding) sortOptions.push({ value: 'additionalFpucUnderAwfrAct', text: 'Additional FPUC Under AWFR Act' })
 
   return (
     <>
@@ -79,7 +86,7 @@ const StatesList = () => {
       <div className="flex flex-wrap mb-20">
         {filteredStates.map((usState, i) => {
           return (
-            <StateCard usState={usState} key={i} />
+            <StateCard hide3moAvg={hide3moAvg} hideAdditionalFunding={hideAdditionalFunding} usState={usState} key={i} />
           )
         })}
       </div>
