@@ -59,7 +59,7 @@ const StatesList = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-between items-center mx-2 mt-4 mb-6">
+      <div className="flex flex-wrap justify-between items-center px-2 md:px-4 mt-4 mb-6">
         <div className="flex justify-center">
           <label className="text-right mb-4 sm:mb-0">
             <span className="text-white mr-2">Order by:</span>
@@ -71,7 +71,7 @@ const StatesList = () => {
           </label>
         </div>
 
-        <div className="flex w-full sm:max-w-1/2">
+        <div className="flex w-full sm:max-w-1/2 sm:pl-4">
           <input className="text-gray-900 rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
       </div>
