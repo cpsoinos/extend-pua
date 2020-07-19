@@ -8,9 +8,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "yarn run watch:css && start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "NODE_ENV=production yarn run build:css && build-storybook -s public",
     "build:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/main.css",
-    "watch:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/main.css"
+    "watch:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/main.css",
+    "chromatic": "npx chromatic --project-token=5m0n222age"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
@@ -63,6 +64,7 @@
     "@types/lodash": "^4.14.157",
     "@types/react-router-dom": "^5.1.5",
     "autoprefixer": "^9.8.4",
+    "chromatic": "^5.0.0",
     "postcss-cli": "^7.1.1",
     "tailwindcss": "^1.4.6"
   }
