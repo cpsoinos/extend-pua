@@ -90,6 +90,7 @@ const StatesList = (props: StatesListProps) => {
           )
         })}
       </div>
+      <small className="px-2 md:px-4">* Anderson, J. (2020, June 30). This Is the Living Wage You Need in All 50 States [Blog post]. <em>GOBankingRates</em>. Retrieved from <a href="https://www.gobankingrates.com/money/jobs/living-wage-every-state">https://www.gobankingrates.com/money/jobs/living-wage-every-state</a></small>
     </>
   )
 }

@@ -3,7 +3,7 @@ import { AWRAState } from 'types/AWRAState'
 import capitalize from 'lodash/capitalize'
 import { useUsStates } from 'hooks/useUsStates'
 import { formatCurrency } from 'util/formatCurrency'
-import classNames from 'classnames'
+import { currencyStringToNumber } from 'util/currencyStringToNumber'
 
 interface StateCardProps {
   usState: AWRAState
@@ -13,19 +13,19 @@ interface StateCardProps {
 
 const StateCard = (props: StateCardProps) => {
   const { usState, hide3moAvg = false, hideAdditionalFunding = false } = props
-  const { fullStateName, weeklyLivingWage } = useUsStates()
+  const { fullStateName, weeklyLivingWage, awraStateClassName } = useUsStates()
 
-  const usStateClassName = classNames({
-    'text-blue-tier-0': usState.tier === 'No Tier',
-    'text-blue-tier-1': usState.tier === 'Tier 1',
-    'text-blue-tier-2': usState.tier === 'Tier 2',
-    'text-blue-tier-3': usState.tier === 'Tier 3',
-    'text-blue-tier-4': usState.tier === 'Tier 4',
-    'text-blue-tier-5': usState.tier === 'Tier 5',
-    'text-blue-tier-6': usState.tier === 'Tier 6',
-  })
   const componentFileName = capitalize(usState.state)
   const StateSVG = lazy(() => import(`components/StateSVGs/${componentFileName}`))
+
+  const usStateClassName = awraStateClassName(usState)
+
+  const sumUnemploymentPayout = hideAdditionalFunding
+    ? currencyStringToNumber(usState.stateMaxUnemploymentPayout)
+    : currencyStringToNumber(usState.stateMaxUnemploymentPayout) + currencyStringToNumber(usState.additionalFpucUnderAwfrAct)
+
+  const usStateWeeklyLivingWage = weeklyLivingWage(usState.state)
+  const livingCostCovered = sumUnemploymentPayout - usStateWeeklyLivingWage
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-2 md:px-4 py-2">
@@ -75,18 +75,37 @@ const StateCard = (props: StateCardProps) => {
         <div className="mt-4">
           <h4 className="text-sm font-luloBold">Unemployment Payouts</h4>
           <div className="w-full">
-            <dl className="w-full">
+            <dl className="w-full border-gray-900 border-b">
               <dt className="inline-block w-3/4">State max:</dt>
-              <dd className="inline-block w-1/4 text-right">{formatCurrency( usState.stateMaxUnemploymentPayout)}</dd>
+              <dd className="inline-block w-1/4 text-right">{formatCurrency(usState.stateMaxUnemploymentPayout)}</dd>
               {!hideAdditionalFunding && (
                 <>
                   <dt className="inline-block w-3/4">Additional FPUC under AWFR Act:</dt>
-                  <dd className="inline-block w-1/4 text-right">{formatCurrency( usState.additionalFpucUnderAwfrAct)}</dd>
+                  <dd className="inline-flex w-1/4 justify-between">
+                    <span className="inline-flex">+</span>
+                    <span className="inline-flex">{formatCurrency(usState.additionalFpucUnderAwfrAct)}</span>
+                  </dd>
                 </>
               )}
-              <dt className="inline-block w-3/4">Weekly living wage:</dt>
-              <dd className="inline-block w-1/4 text-right">{formatCurrency( weeklyLivingWage(usState.state))}</dd>
+              {!isNaN(usStateWeeklyLivingWage) && (
+                <>
+                  <dt className="inline-block w-3/4">Weekly living wage:*</dt>
+                  <dd className="inline-flex justify-between w-1/4 text-red-flag">
+                    <span className="inline-flex">-</span>
+                    <span className="inline-flex">{formatCurrency(usStateWeeklyLivingWage)}</span>
+                  </dd>
+                </>
+              )}
             </dl>
+            {!isNaN(usStateWeeklyLivingWage) && (
+              <dl className="font-bold">
+                <dt className="inline-block w-3/4">Total:</dt>
+                <dd className="inline-flex justify-between w-1/4 text-red-flag">
+                  <span className="inline-flex">-</span>
+                  <span className="inline-flex">{formatCurrency(livingCostCovered)}</span>
+                </dd>
+              </dl>
+            )}
           </div>
         </div>
       </div>
