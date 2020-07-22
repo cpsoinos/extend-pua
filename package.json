@@ -11,8 +11,7 @@
     "build-storybook": "NODE_ENV=production yarn run build:css && build-storybook -s public",
     "build:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/main.css",
     "watch:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/main.css",
-    "chromatic": "npx chromatic --project-token=5m0n222age",
-    "build-chromatic": "NODE_ENV=production yarn run build:css && npx chromatic --project-token=5m0n222age"
+    "chromatic": "npx chromatic --project-token=5m0n222age"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
