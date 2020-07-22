@@ -3,6 +3,7 @@ import { AWRAState } from 'types/AWRAState'
 import capitalize from 'lodash/capitalize'
 import { useUsStates } from 'hooks/useUsStates'
 import { formatCurrency } from 'util/formatCurrency'
+import classNames from 'classnames'
 import { currencyStringToNumber } from 'util/currencyStringToNumber'
 
 interface StateCardProps {
@@ -13,12 +14,20 @@ interface StateCardProps {
 
 const StateCard = (props: StateCardProps) => {
   const { usState, hide3moAvg = false, hideAdditionalFunding = false } = props
-  const { fullStateName, weeklyLivingWage, awraStateClassName } = useUsStates()
+  const { fullStateName, weeklyLivingWage } = useUsStates()
 
   const componentFileName = capitalize(usState.state)
   const StateSVG = lazy(() => import(`components/StateSVGs/${componentFileName}`))
 
-  const usStateClassName = awraStateClassName(usState)
+  const usStateClassName = classNames({
+    'text-blue-tier-0': usState.tier === 'No Tier',
+    'text-blue-tier-1': usState.tier === 'Tier 1',
+    'text-blue-tier-2': usState.tier === 'Tier 2',
+    'text-blue-tier-3': usState.tier === 'Tier 3',
+    'text-blue-tier-4': usState.tier === 'Tier 4',
+    'text-blue-tier-5': usState.tier === 'Tier 5',
+    'text-blue-tier-6': usState.tier === 'Tier 6',
+  })
 
   const sumUnemploymentPayout = hideAdditionalFunding
     ? currencyStringToNumber(usState.stateMaxUnemploymentPayout)
