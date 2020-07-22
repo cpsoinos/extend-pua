@@ -84,7 +84,7 @@ const StateCard = (props: StateCardProps) => {
         <div className="mt-4">
           <h4 className="text-sm font-luloBold">Unemployment Payouts</h4>
           <div className="w-full">
-            <dl className="w-full border-gray-900 border-b">
+            <dl className={classNames('w-full', { 'border-gray-900 border-b': !isNaN(usStateWeeklyLivingWage) })}>
               <dt className="inline-block w-3/4">State max:</dt>
               <dd className="inline-block w-1/4 text-right">{formatCurrency(usState.stateMaxUnemploymentPayout)}</dd>
               {!hideAdditionalFunding && (
