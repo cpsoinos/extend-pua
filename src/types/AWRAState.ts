@@ -7,6 +7,7 @@ export interface AWRAState {
   createdDate?:               Date;
   updatedDate?:               Date;
   stateMaxUnemploymentPayout: number | string;
+  stateAvg:                   string;
   additionalFpucUnderAwfrAct: string;
   monthAverage:               number;
   prepandemicUePopulation:    string;

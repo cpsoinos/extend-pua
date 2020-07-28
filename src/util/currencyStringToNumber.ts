@@ -1,3 +1,3 @@
 export const currencyStringToNumber = (amount: string | number) => {
-  return parseInt(`${amount}`.replace(/\D/g, ''))
+  return parseInt(parseInt(`${amount}`.replace(/\$/g, '')).toFixed())
 }

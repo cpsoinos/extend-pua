@@ -57,19 +57,20 @@ const StatesList = (props: StatesListProps) => {
     { value: 'state', text: 'State name' },
     { value: 'tier', text: 'Tier' },
     { value: 'currentUeRate', text: 'Current unemployment rate' },
-    { value: 'prepandemicUePopulation', text: 'Pre-pandemic unemployment population' },
-    { value: 'juneUePopulation', text: 'June unemployment population' },
-    { value: 'stateMaxUnemploymentPayout', text: 'State maximum unemployment payout' },
+    { value: 'prepandemicUePopulation', text: 'Unemployed (pre-pandemic)' },
+    { value: 'juneUePopulation', text: 'Unemployed (June)' },
+    { value: 'stateAvg', text: 'State avg unempl payout' },
   ]
-  if (!hide3moAvg) sortOptions.push({ value: 'monthAverage', text: '3-month avgerage unemployment rate' })
-  if (!hideAdditionalFunding) sortOptions.push({ value: 'additionalFpucUnderAwfrAct', text: 'Additional FPUC Under AWFR Act' })
+  if (!hide3moAvg) sortOptions.push({ value: 'monthAverage', text: '3-mo avg unempl rate' })
+  if (!hideAdditionalFunding) sortOptions.push({ value: 'additionalFpucUnderAwfrAct', text: 'Add\'l FPUC under AWFR Act' })
 
   return (
     <>
       <div className="flex flex-wrap justify-between items-center px-2 md:px-4 mt-4 mb-6">
+
         <div className="flex justify-center">
           <label className="text-right mb-4 sm:mb-0">
-            <span className="text-white mr-2">Order by:</span>
+            <span className="text-white mr-2">Sort:</span>
             <select className="text-gray-900 p-1 rounded-md" onChange={onOrderChange}>
               {sortOptions.map((sortOption, i) => {
                 return <option key={i} value={sortOption.value}>{sortOption.text}</option>
@@ -78,7 +79,7 @@ const StatesList = (props: StatesListProps) => {
           </label>
         </div>
 
-        <div className="flex w-full sm:max-w-1/2 sm:pl-4">
+        <div className="flex flex-grow sm:max-w-1/2 sm:pl-4">
           <input className="text-gray-900 rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
       </div>
@@ -90,7 +91,7 @@ const StatesList = (props: StatesListProps) => {
           )
         })}
       </div>
-      <small className="px-2 md:px-4">* Anderson, J. (2020, June 30). This Is the Living Wage You Need in All 50 States [Blog post]. <em>GOBankingRates</em>. Retrieved from <a href="https://www.gobankingrates.com/money/jobs/living-wage-every-state">https://www.gobankingrates.com/money/jobs/living-wage-every-state</a></small>
+      <small className="leading-none text-left px-2 md:px-4">* Anderson, J. (2020, June 30). This Is the Living Wage You Need in All 50 States [Blog post]. <em>GOBankingRates</em>. Retrieved from <a href="https://www.gobankingrates.com/money/jobs/living-wage-every-state">https://www.gobankingrates.com/money/jobs/living-wage-every-state</a></small>
     </>
   )
 }

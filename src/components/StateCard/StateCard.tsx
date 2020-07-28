@@ -30,8 +30,8 @@ const StateCard = (props: StateCardProps) => {
   })
 
   const sumUnemploymentPayout = hideAdditionalFunding
-    ? currencyStringToNumber(usState.stateMaxUnemploymentPayout)
-    : currencyStringToNumber(usState.stateMaxUnemploymentPayout) + currencyStringToNumber(usState.additionalFpucUnderAwfrAct)
+    ? currencyStringToNumber(usState.stateAvg)
+    : currencyStringToNumber(usState.stateAvg) + currencyStringToNumber(usState.additionalFpucUnderAwfrAct)
 
   const usStateWeeklyLivingWage = weeklyLivingWage(usState.state)
   const livingCostCovered = sumUnemploymentPayout - usStateWeeklyLivingWage
@@ -85,11 +85,11 @@ const StateCard = (props: StateCardProps) => {
           <h4 className="text-sm font-luloBold">Unemployment Payouts</h4>
           <div className="w-full">
             <dl className={classNames('w-full', { 'border-gray-900 border-b': !isNaN(usStateWeeklyLivingWage) })}>
-              <dt className="inline-block w-3/4">State max:</dt>
-              <dd className="inline-block w-1/4 text-right">{formatCurrency(usState.stateMaxUnemploymentPayout)}</dd>
+              <dt className="inline-block w-3/4">State average:</dt>
+              <dd className="inline-block w-1/4 text-right">{formatCurrency(usState.stateAvg)}</dd>
               {!hideAdditionalFunding && (
                 <>
-                  <dt className="inline-block w-3/4">Additional FPUC under AWFR Act:</dt>
+                  <dt className="inline-block w-3/4">Add'l FPUC under AWFR Act:</dt>
                   <dd className="inline-flex w-1/4 justify-between">
                     <span className="inline-flex">+</span>
                     <span className="inline-flex">{formatCurrency(usState.additionalFpucUnderAwfrAct)}</span>
