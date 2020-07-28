@@ -16,7 +16,7 @@ const SocialHandleButton = (props: SocialHandleLinkProps) => {
   const buttonName = `senator-card_${platform}`
 
   return (
-    <Button href={url} className="text-gray-900" name={buttonName}>
+    <Button href={url} name={buttonName}>
       <>
         <FontAwesomeIcon className="mr-1" icon={icon} fixedWidth />
         <span className="tooltip">

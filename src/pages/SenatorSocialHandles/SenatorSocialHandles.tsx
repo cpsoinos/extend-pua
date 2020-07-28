@@ -70,15 +70,16 @@ const SenatorSocialHandles = () => {
 
   return (
     <>
-      <div className="py-12">
+      {/* <div className="py-12">
         <p className="text-white font-luloBold text-3xl">@ your senator</p>
         <p className="text-red-flag font-luloBold text-xl leading-none">Take your message straight to them</p>
-      </div>
+      </div> */}
 
-      <div className="flex flex-wrap justify-between items-center mx-2 mt-4 mb-6">
+      <div className="flex flex-wrap justify-between items-center px-2 md:px-4 mt-4 mb-6">
+
         <div className="flex justify-center">
           <label className="text-right mb-4 sm:mb-0">
-            <span className="text-white mr-2">Order by:</span>
+            <span className="text-white mr-2">Sort:</span>
             <select className="text-gray-900 p-1 rounded-md" onChange={onOrderChange}>
               {sortOptions.map((sortOption, i) => {
                 return <option key={i} value={sortOption.value}>{sortOption.text}</option>
@@ -99,20 +100,22 @@ const SenatorSocialHandles = () => {
       <div className="flex flex-wrap mb-20">
         {filteredSenators.map((senator, i) => {
           return (
-            <CongressPersonCard
-              key={i}
-              avatar={senator.avatar}
-              lastName={senator.last}
-              firstName={senator.first}
-              usState={senator.st}
-              party={senator.party}
-              upForReElection={+senator.reElection}
-              instagram={buildInstagram(senator)}
-              twitter={buildTwitter(senator)}
-              facebook={buildFacebook(senator)}
-              phone={buildPhone(senator)}
-              mail={buildMail(senator)}
-            />
+            <div className="flex w-1/2 px-2">
+              <CongressPersonCard
+                key={i}
+                avatar={senator.avatar}
+                lastName={senator.last}
+                firstName={senator.first}
+                usState={senator.st}
+                party={senator.party}
+                upForReElection={+senator.reElection}
+                instagram={buildInstagram(senator)}
+                twitter={buildTwitter(senator)}
+                facebook={buildFacebook(senator)}
+                phone={buildPhone(senator)}
+                mail={buildMail(senator)}
+              />
+            </div>
           )
         })}
       </div>

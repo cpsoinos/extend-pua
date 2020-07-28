@@ -21,17 +21,35 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
 
   const socialHandles = [facebook, twitter, instagram, phone, mail]
 
+  const cardClasses = classNames(
+    'sm:flex',
+    'w-full',
+    // 'md:w-1/2',
+    'mb-4',
+    'p-2',
+    'sm:rounded-md',
+    'rounded-md',
+    // 'rounded-t',
+    {
+      'bg-background-blue': party === 'D',
+      'bg-red-flag': party === 'R',
+      'bg-gray-400': party === 'I***'
+    }
+  )
+
   const imageClasses = classNames(
     'sm:h-auto',
     'flex-none',
-    'rounded-tl',
+    // 'rounded-tl',
+    // 'rounded-br',
+    'rounded',
     'sm:rounded-br-none',
     'sm:rounded-bl',
     'object-cover',
     'overflow-hidden',
-    'border-b-8',
     'sm:border-b-0',
     'sm:border-l-8',
+    'w-40',
     'sm:w-full',
     {
       'border-background-blue': party === 'D',
@@ -40,15 +58,40 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     }
   )
 
-  const nextToImageClasses = classNames('flex', 'flex-col', 'justify-center', 'sm:hidden', 'w-full', 'rounded-tr', 'p-6', {
-    'text-white bg-red-flag': party === 'R',
-    'text-white bg-background-blue': party === 'D',
-    'text-black bg-gray-400': party === 'I***'
-  })
+  const nextToImageClasses = classNames(
+    'flex',
+    'flex-col',
+    'justify-center',
+    'sm:hidden',
+    'w-full',
+    'rounded-tr',
+    'p-2',
+    {
+      'text-white bg-red-flag': party === 'R',
+      'text-white bg-background-blue': party === 'D',
+      'text-black bg-gray-400': party === 'I***'
+    }
+  )
+
+  const bodyClasses = classNames(
+    'sm:rounded-r',
+    'rounded-b',
+    'sm:rounded-bl-none',
+    'p-2',
+    'leading-normal',
+    'w-full',
+    'overflow-auto',
+    {
+      'bg-background-blue': party === 'D',
+      'bg-red-flag': party === 'R',
+      'bg-gray-400 text-black': party === 'I***',
+      'text-white': party !== 'I***',
+    }
+  )
 
   return (
-    <div className="sm:flex w-full md:w-1/2 mb-4 px-0 sm:px-2 sm:rounded-md rounded-t">
-      <div className="flex bg-white rounded-t rounded-l">
+    <div className={cardClasses}>
+      <div className="flex rounded-t rounded-l">
         <img className={imageClasses} src={avatar} alt={`Senator ${lastName} ${firstName}`} />
         <div className={nextToImageClasses}>
           <p className="font-luloBold">{usState} - {party}</p>
@@ -56,11 +99,11 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
         </div>
       </div>
 
-      <div className="bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
+      <div className={bodyClasses}>
         <div className="mb-4 leading-tight">
-          <p className="hidden sm:inline-block text-sm text-gray-600 font-lulo">{usState} - {party}</p>
-          <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
-          <small className="hidden sm:inline-block text-gray-700 text-xs italic">Up for re-election in {upForReElection}</small>
+          <p className="hidden sm:inline-block text-sm font-lulo">{usState} - {party}</p>
+          <h3 className="font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
+          <small className="hidden sm:inline-block text-xs italic">Up for re-election in {upForReElection}</small>
         </div>
 
         <ul>
