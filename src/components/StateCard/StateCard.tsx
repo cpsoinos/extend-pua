@@ -47,7 +47,7 @@ const StateCard = (props: StateCardProps) => {
               </Suspense>
             </div>
             <div className="px-4 text-center sm:text-left">
-              <p className="text-sm text-gray-600 font-lulo">{usState.tier}</p>
+              {!hide3moAvg && <p className="text-sm text-gray-600 font-lulo">{usState.tier}</p>}
               <h3 className="text-gray-900 font-bold text-xl font-luloBold">{fullStateName(usState.state)}</h3>
             </div>
           </div>
