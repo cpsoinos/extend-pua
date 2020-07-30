@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useAWRAStates } from 'hooks/useAWRAStates'
-import { AWRAState } from 'types/AWRAState'
 import StateCard from 'components/StateCard/StateCard'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
+import { useUsStates } from 'hooks/useUsStates'
+import { UsState } from 'types/UsState'
 
 interface StatesListProps {
   hide3moAvg?: boolean
@@ -13,16 +14,23 @@ interface StatesListProps {
 const StatesList = (props: StatesListProps) => {
   const { hide3moAvg = false, hideAdditionalFunding = false } = props
 
-  const [states, setStates] = useState<AWRAState[]>([])
-  const [filteredStates, filterStates] = useState<AWRAState[]>([])
+  const [states, setStates] = useState<UsState[]>([])
+  const [filteredStates, filterStates] = useState<UsState[]>([])
   const { getAWRAStates } = useAWRAStates()
+  const { fullStateName } = useUsStates()
   const [orderBy, setOrderBy] = useState('state')
   const { addIndex, addDocuments, search } = useSearch()
 
   useEffect(() => {
-    ['tier', 'currentUeRate', 'state', 'stateMaxUnemploymentPayout', 'additionalFpucUnderAwfrAct', 'monthAverage', 'prepandemicUePopulation', 'juneUePopulation'].map(addIndex)
+    ['tier', 'currentUeRate', 'state', 'stateName', 'stateMaxUnemploymentPayout', 'additionalFpucUnderAwfrAct', 'monthAverage', 'prepandemicUePopulation', 'juneUePopulation'].map(addIndex)
     getAWRAStates().then((data) => {
-      const sorted = sortBy(data, orderBy)
+      const usStates = data.map((awraState) => {
+        return {
+          ...awraState,
+          stateName: fullStateName(awraState.state)
+        }
+      })
+      const sorted = sortBy(usStates, orderBy)
       setStates(sorted)
       filterStates(sorted)
     })
@@ -48,7 +56,7 @@ const StatesList = (props: StatesListProps) => {
     const query = event.currentTarget.value
     if (query === '') filterStates(states)
     else {
-      const results = search(query) as AWRAState[]
+      const results = search(query) as UsState[]
       filterStates(results)
     }
   }
