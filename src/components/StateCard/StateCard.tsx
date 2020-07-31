@@ -117,6 +117,11 @@ const StateCard = (props: StateCardProps) => {
             )}
           </div>
         </div>
+        <div className="flex flex-row-reverse">
+          <a className="max-w-1/2 pt-6" href="https://www.extendpua.org/" target="_blank" rel="noopener noreferrer">
+            <img src="/ePUA_JPG_BlackOnWhite_LOGO.jpg" alt="ExtendPUA.org logo" loading="lazy" />
+          </a>
+        </div>
       </div>
     </div>
   )
