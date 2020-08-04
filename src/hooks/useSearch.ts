@@ -1,17 +1,16 @@
 import * as JsSearch from 'js-search'
 import { useState } from 'react'
 import { SenatorSocialHandleRecord } from "types/SenatorSocialHandleRecord"
+import { AWRAState } from 'types/AWRAState'
 
 export const useSearch = () => {
   const [searchIndex,] = useState(new JsSearch.Search('_id'))
 
-  searchIndex.addIndex('st')
-  searchIndex.addIndex('first')
-  searchIndex.addIndex('last')
-  searchIndex.addIndex('party')
-  searchIndex.addIndex('reElection')
+  const addIndex = (field: string) => {
+    searchIndex.addIndex(field)
+  }
 
-  const addDocuments = (documents: SenatorSocialHandleRecord[]) => {
+  const addDocuments = (documents: SenatorSocialHandleRecord[] | AWRAState[]) => {
     searchIndex.addDocuments(documents)
   }
 
@@ -19,5 +18,5 @@ export const useSearch = () => {
     return searchIndex.search(query)
   }
 
-  return { addDocuments, search }
+  return { addIndex, addDocuments, search }
 }

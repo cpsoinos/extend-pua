@@ -12,8 +12,8 @@
   src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
 }
 
-.rotate-270 {
-  transform: rotate(270deg);
+.bg-image-masks {
+  background-image: url('https://static.wixstatic.com/media/11062b_49bd140ff6034d019057a7dddc081e2c~mv2.jpg/v1/fill/w_1920,h_1280,al_t,q_85,usm_0.66_1.00_0.01/11062b_49bd140ff6034d019057a7dddc081e2c~mv2.jpg');
 }
 
 .switch__knob:before {

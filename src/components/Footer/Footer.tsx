@@ -3,7 +3,7 @@ import Button from 'components/Button/Button'
 
 const Footer = () => {
   return (
-    <footer className="flex flex-wrap text-white font-luloBold">
+    <footer className="flex flex-wrap text-white font-luloBold mt-8">
       <div className="w-full max-w-1/2 sm:max-w-1/3">
         <Button href="https://www.crisistextline.org/" className="bg-red-flag p-1 text-xxs rounded-md hover:bg-blue-deep-sky">
           In a crisis?
