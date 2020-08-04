@@ -6,6 +6,7 @@ import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
 import Switch from 'components/Switch/Switch'
+import { useUsStates } from 'hooks/useUsStates'
 
 const SenatorSocialHandles = () => {
   const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
@@ -49,9 +50,12 @@ const SenatorSocialHandles = () => {
     }
   }
 
+  const { fullStateName } = useUsStates()
   const onFilteredToKeyStates = (toggle: boolean) => {
     if (toggle) {
-      const keyStates = ['KY', 'SC', 'OH', 'FL', 'NC', 'PA', 'WI', 'AZ', 'NY', 'ME']
+      const keyStates = ['KY', 'SC', 'OH', 'FL', 'NC', 'PA', 'WI', 'AZ', 'NY', 'ME'].map((abbr) => {
+        return fullStateName(abbr)
+      })
       const filtered = senators.filter((senator) => {
         return keyStates.includes(senator.st) && senator.party === 'R'
       })
@@ -70,11 +74,6 @@ const SenatorSocialHandles = () => {
 
   return (
     <>
-      {/* <div className="py-12">
-        <p className="text-white font-luloBold text-3xl">@ your senator</p>
-        <p className="text-red-flag font-luloBold text-xl leading-none">Take your message straight to them</p>
-      </div> */}
-
       <div className="flex flex-wrap justify-between items-center px-2 md:px-4 mt-4 mb-6">
 
         <div className="flex justify-center">
@@ -100,7 +99,7 @@ const SenatorSocialHandles = () => {
       <div className="flex flex-wrap mb-20">
         {filteredSenators.map((senator, i) => {
           return (
-            <div className="flex w-1/2 px-2">
+            <div className="flex flex-1 sm:flex-auto sm:w-1/2 px-2">
               <CongressPersonCard
                 key={i}
                 avatar={senator.avatar}
