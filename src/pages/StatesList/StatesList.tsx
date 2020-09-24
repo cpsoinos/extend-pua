@@ -66,7 +66,7 @@ const StatesList = (props: StatesListProps) => {
     { value: 'tier', text: 'Tier' },
     { value: 'currentUeRate', text: 'Current unemployment rate' },
     { value: 'prepandemicUePopulation', text: 'Unemployed (pre-pandemic)' },
-    { value: 'juneUePopulation', text: 'Unemployed (June)' },
+    { value: 'juneUePopulation', text: 'Unemployed (August)' },
     { value: 'stateAvg', text: 'State avg unempl payout' },
   ]
   if (!hide3moAvg) sortOptions.push({ value: 'monthAverage', text: '3-mo avg unempl rate' })
