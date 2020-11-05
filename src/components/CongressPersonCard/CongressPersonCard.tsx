@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 import SocialHandleLink, { SocialHandleLinkProps } from 'components/SocialHandleLink/SocialHandleLink'
+import { Image } from 'cloudinary-react'
 
 export interface CongressPersonCardProps {
-  avatar?: string,
   lastName: string
   firstName: string
   party: string
@@ -17,7 +17,7 @@ export interface CongressPersonCardProps {
 }
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
-  const { avatar, lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, phone, mail } = props
+  const { lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, phone, mail } = props
 
   const socialHandles = [facebook, twitter, instagram, phone, mail]
 
@@ -56,7 +56,19 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   return (
     <div className="sm:flex w-full mb-4 px-0 sm:px-2 sm:rounded-md rounded-t">
       <div className={imageWrapperClasses}>
-        <img className={imageClasses} loading="lazy" src={avatar} alt={`Senator ${lastName} ${firstName}`} />
+        <Image
+          cloudName="extend-pua"
+          publicId={facebook.handle}
+          type="facebook"
+          dpr="auto"
+          responsive
+          width="auto"
+          crop="scale"
+          responsiveUseBreakpoints="true"
+          loading="lazy"
+          className={imageClasses}
+          alt={`Senator ${lastName} ${firstName}`}
+        />
       </div>
 
       <div className="bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
