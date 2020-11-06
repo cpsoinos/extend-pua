@@ -99,10 +99,8 @@ const SenatorSocialHandles = () => {
       <div className="flex flex-wrap mb-20">
         {filteredSenators.map((senator, i) => {
           return (
-            <div className="flex w-full sm:flex-auto sm:w-1/2 px-2">
+            <div className="flex w-full sm:flex-auto sm:w-1/2 px-2" key={i}>
               <CongressPersonCard
-                key={i}
-                avatar={senator.avatar}
                 lastName={senator.last}
                 firstName={senator.first}
                 usState={senator.st}

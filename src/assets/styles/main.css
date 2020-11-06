@@ -606,16 +606,25 @@ video {
   }
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Lulo Clean W01 One Bold';
-
   src: local('Lulo Clean W01 One Bold'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One-Bold.ttf') format('truetype');
+} */
+
+@font-face {
+  font-family: 'Lulo Clean One Bold';
+
+  src: local('Lulo Clean One Bold'), url('../fonts/Lulo-Clean-One-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Lulo Clean W01 One';
 
   src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
+}
+
+.handles-bg {
+  background-image: url('https://res.cloudinary.com/extend-pua/image/upload/f_auto,q_auto,w_auto/v1604685036/brand/Handles_BG-01_gtltve.png')
 }
 
 .bg-image-masks {
