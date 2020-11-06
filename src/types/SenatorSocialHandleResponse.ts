@@ -1,9 +1,9 @@
 import { SenatorSocialHandleRecord } from './SenatorSocialHandleRecord'
 
-export interface SenatorSocialHandlesResponse {
+export interface CongressSocialHandlesResponse {
   items: SenatorSocialHandleRecord[]
 }
 
-export enum LinkSenatorSocialHandlesAll {
-  SenatorSocialHandles = "/senator-social-handles/",
+export enum LinkCongressSocialHandlesAll {
+  CongressSocialHandles = "/senator-social-handles/",
 }

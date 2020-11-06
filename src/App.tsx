@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
-import SenatorSocialHandles from 'pages/SenatorSocialHandles/SenatorSocialHandles'
+import CongressSocialHandles from 'pages/CongressSocialHandles/CongressSocialHandles'
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       </div>
       <div className="relative container mx-auto py-4 px-2">
         <Header />
-          <SenatorSocialHandles />
+          <CongressSocialHandles />
         <Footer />
       </div>
     </div>

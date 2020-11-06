@@ -1,9 +1,9 @@
-import { SenatorSocialHandlesResponse } from 'types/SenatorSocialHandleResponse'
+import { CongressSocialHandlesResponse } from 'types/SenatorSocialHandleResponse'
 import senatorImages from 'assets/senatorImages.json'
 
-export const useSenatorSocialHandles = () => {
-  const getSenatorSocialHandles = async () => {
-    const senatorSocialHandlesList: SenatorSocialHandlesResponse = await (await (await fetch('https://www.extendpua.org/_functions/senatorSocialHandles')).json())
+export const useCongressSocialHandles = () => {
+  const getCongressSocialHandles = async () => {
+    const senatorSocialHandlesList: CongressSocialHandlesResponse = await (await (await fetch('https://www.extendpua.org/_functions/senatorSocialHandles')).json())
 
     const socialHandles = senatorSocialHandlesList.items.filter((senator) => {
       return senator.last !== 'Last Name'
@@ -19,5 +19,5 @@ export const useSenatorSocialHandles = () => {
     })
   }
 
-  return { getSenatorSocialHandles }
+  return { getCongressSocialHandles }
 }

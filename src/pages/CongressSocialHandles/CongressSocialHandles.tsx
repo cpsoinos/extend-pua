@@ -8,7 +8,7 @@ import Switch from 'components/Switch/Switch'
 import { useUsStates } from 'hooks/useUsStates'
 import { CongressDbRecord } from 'types/CongressDatabaseResponse'
 
-const SenatorSocialHandles = () => {
+const CongressSocialHandles = () => {
   const [senators, setSenators] = useState<CongressDbRecord[]>([])
   const [filteredSenators, filterSenators] = useState<CongressDbRecord[]>([])
   const { getCongressMembers } = useCongressDatabase()
@@ -122,4 +122,4 @@ const SenatorSocialHandles = () => {
   )
 }
 
-export default SenatorSocialHandles;
+export default CongressSocialHandles;
