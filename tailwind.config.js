@@ -37,12 +37,28 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        lulo: [
-          '"Lulo Clean W01 One"',
+        // lulo: [
+        //   '"Lulo Clean One"',
+        //   'sans-serif'
+        // ],
+        luloBold: [
+          '"Lulo Clean One Bold"',
           'sans-serif'
         ],
-        luloBold: [
-          '"Lulo Clean W01 One Bold"',
+        futuraPTMedium: [
+          '"Futura PT Medium"',
+          'sans-serif'
+        ],
+        futuraPTMediumOblique: [
+          '"Futura PT MediumO blique"',
+          'sans-serif'
+        ],
+        futuraPTLight: [
+          '"Futura PT Light"',
+          'sans-serif'
+        ],
+        futuraPTLightOblique: [
+          '"Futura PT Light Oblique"',
           'sans-serif'
         ],
         sans: [

@@ -13,9 +13,30 @@
 }
 
 @font-face {
+  font-family: 'Futura PT Medium';
+  src: url('../fonts/FuturaPTMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Medium Oblique';
+  src: url('../fonts/FuturaPTMediumOblique.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Light';
+  src: url('../fonts/FuturaPTLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Light Oblique';
+  src: url('../fonts/FuturaPTLightOblique.otf') format('opentype');
+}
+
+
+/* @font-face {
   font-family: 'Lulo Clean W01 One';
   src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
-}
+} */
 
 .handles-bg {
   background-image: url('https://res.cloudinary.com/extend-pua/image/upload/f_auto,q_auto,w_auto/v1604685036/brand/Handles_BG-01_gtltve.png')

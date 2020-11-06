@@ -1,7 +1,11 @@
 import React from 'react'
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
-import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faMailBulk, faPhone, faEnvelope } from '@fortawesome/pro-regular-svg-icons'
+import { ReactComponent as EmailIcon } from 'assets/icons/Handles_SocialIcon_Email.svg'
+import { ReactComponent as FacebookIcon } from 'assets/icons/Handles_SocialIcon_Facebook.svg'
+import { ReactComponent as InstagramIcon } from 'assets/icons/Handles_SocialIcon_Instagram.svg'
+import { ReactComponent as MeetIcon } from 'assets/icons/Handles_SocialIcon_Meet.svg'
+import { ReactComponent as PhoneIcon } from 'assets/icons/Handles_SocialIcon_Phone.svg'
+import { ReactComponent as TwitterIcon } from 'assets/icons/Handles_SocialIcon_Twitter.svg'
 import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {
@@ -11,45 +15,45 @@ export default {
 }
 
 const instagram = {
-  platform: 'instagram',
+  platform: 'instagram' as const,
   handle: '@KamalaHarris',
   url: 'instagram.com/kamalaharris',
-  icon: faInstagram
+  icon: InstagramIcon
 }
 
 const facebook = {
-  platform: 'facebook',
+  platform: 'facebook' as const,
   handle: 'KamalaHarris',
   url: 'facebook.com/kamalaharris',
-  icon: faFacebook
+  icon: FacebookIcon
 }
 
 const twitter = {
-  platform: 'twitter',
+  platform: 'twitter' as const,
   handle: '@KamalaHarris',
   url: 'twitter.com/kamalaharris',
-  icon: faTwitter
+  icon: TwitterIcon
 }
 
 const phone = {
-  platform: 'phone',
+  platform: 'phone' as const,
   handle: '(555) 867-5309',
   url: 'tel:(555) 867-5309',
-  icon: faPhone
+  icon: PhoneIcon
 }
 
 const email = {
-  platform: 'email',
+  platform: 'email' as const,
   handle: 'Email your elected official',
   url: 'tel:(555) 867-5309',
-  icon: faEnvelope
+  icon: EmailIcon
 }
 
 const meet = {
-  platform: 'meet',
+  platform: 'meet' as const,
   handle: 'Virtually meet with your elected official',
   url: 'https://www.extendpua.org/meet',
-  icon: faMailBulk
+  icon: MeetIcon
 }
 
 const props = {
@@ -57,7 +61,7 @@ const props = {
   lastName: 'Harris',
   firstName: 'Kamala',
   party: 'D',
-  usState: 'CA',
+  usState: 'California',
   upForReElection: 2022,
   instagram,
   facebook,

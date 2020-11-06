@@ -21,14 +21,14 @@ export interface CongressPersonCardProps {
 const CongressPersonCard = (props: CongressPersonCardProps) => {
   const { branch, lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, phone, email, meet } = props
 
-  const socialHandles = [facebook, twitter, instagram, phone, email, meet]
+  const socialHandles = [facebook, twitter, instagram, email, meet, phone]
 
   const imageWrapperClasses = classNames(
     'flex',
     'justify-center',
     'rounded-t',
     'sm:rounded-l',
-    'w-full',
+    'w-5/6',
     'p-8',
     'sm:pl-4',
     'sm:pr-0',
@@ -66,8 +66,11 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     type: facebook.handle ? "facebook" : "twitter_name",
     dpr: "auto",
     responsive: true,
-    width: "auto",
-    crop: "scale",
+    width: 200,
+    height: 500,
+    crop: "fill",
+    gravity: 'face',
+    fetchFormat: 'auto',
     responsiveUseBreakpoints: "true",
     loading: "lazy",
     alt: `${branchMap.get(branch)} ${lastName} ${firstName}`
@@ -81,14 +84,14 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
 
       <div className="bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
         <div className="mb-4 leading-tight">
-          <p className="inline-block text-sm text-gray-600 font-lulo">{usState} - {party}</p>
+          <p className="inline-block text-gray-600 font-futuraPTLight">{usState} - {party}</p>
           <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
-          <small className="inline-block text-gray-700 text-xs italic">Up for re-election in {upForReElection}</small>
+          <small className="inline-block text-gray-700 text-sm font-futuraPTLightOblique">Up for re-election in {upForReElection}</small>
         </div>
 
         <ul>
           {socialHandles.map((socialHandle, i) => (
-            <li className="truncate" key={i}>
+            <li className="truncate font-futuraPTLight mb-2" key={i}>
               <SocialHandleLink {...socialHandle} />
             </li>
           ))}

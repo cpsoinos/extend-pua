@@ -618,10 +618,33 @@ video {
 }
 
 @font-face {
-  font-family: 'Lulo Clean W01 One';
+  font-family: 'Futura PT Medium';
 
-  src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
+  src: url('../fonts/FuturaPTMedium.otf') format('opentype');
 }
+
+@font-face {
+  font-family: 'Futura PT Medium Oblique';
+
+  src: url('../fonts/FuturaPTMediumOblique.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Light';
+
+  src: url('../fonts/FuturaPTLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Light Oblique';
+
+  src: url('../fonts/FuturaPTLightOblique.otf') format('opentype');
+}
+
+/* @font-face {
+  font-family: 'Lulo Clean W01 One';
+  src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
+} */
 
 .handles-bg {
   background-image: url('https://res.cloudinary.com/extend-pua/image/upload/f_auto,q_auto,w_auto/v1604685036/brand/Handles_BG-01_gtltve.png')
@@ -6709,12 +6732,24 @@ video {
   font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.font-lulo {
-  font-family: "Lulo Clean W01 One", sans-serif;
+.font-luloBold {
+  font-family: "Lulo Clean One Bold", sans-serif;
 }
 
-.font-luloBold {
-  font-family: "Lulo Clean W01 One Bold", sans-serif;
+.font-futuraPTMedium {
+  font-family: "Futura PT Medium", sans-serif;
+}
+
+.font-futuraPTMediumOblique {
+  font-family: "Futura PT MediumO blique", sans-serif;
+}
+
+.font-futuraPTLight {
+  font-family: "Futura PT Light", sans-serif;
+}
+
+.font-futuraPTLightOblique {
+  font-family: "Futura PT Light Oblique", sans-serif;
 }
 
 .font-hairline {
@@ -21483,12 +21518,24 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
-  .sm\:font-lulo {
-    font-family: "Lulo Clean W01 One", sans-serif;
+  .sm\:font-luloBold {
+    font-family: "Lulo Clean One Bold", sans-serif;
   }
 
-  .sm\:font-luloBold {
-    font-family: "Lulo Clean W01 One Bold", sans-serif;
+  .sm\:font-futuraPTMedium {
+    font-family: "Futura PT Medium", sans-serif;
+  }
+
+  .sm\:font-futuraPTMediumOblique {
+    font-family: "Futura PT MediumO blique", sans-serif;
+  }
+
+  .sm\:font-futuraPTLight {
+    font-family: "Futura PT Light", sans-serif;
+  }
+
+  .sm\:font-futuraPTLightOblique {
+    font-family: "Futura PT Light Oblique", sans-serif;
   }
 
   .sm\:font-hairline {
@@ -36258,12 +36305,24 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
-  .md\:font-lulo {
-    font-family: "Lulo Clean W01 One", sans-serif;
+  .md\:font-luloBold {
+    font-family: "Lulo Clean One Bold", sans-serif;
   }
 
-  .md\:font-luloBold {
-    font-family: "Lulo Clean W01 One Bold", sans-serif;
+  .md\:font-futuraPTMedium {
+    font-family: "Futura PT Medium", sans-serif;
+  }
+
+  .md\:font-futuraPTMediumOblique {
+    font-family: "Futura PT MediumO blique", sans-serif;
+  }
+
+  .md\:font-futuraPTLight {
+    font-family: "Futura PT Light", sans-serif;
+  }
+
+  .md\:font-futuraPTLightOblique {
+    font-family: "Futura PT Light Oblique", sans-serif;
   }
 
   .md\:font-hairline {
@@ -51033,12 +51092,24 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
-  .lg\:font-lulo {
-    font-family: "Lulo Clean W01 One", sans-serif;
+  .lg\:font-luloBold {
+    font-family: "Lulo Clean One Bold", sans-serif;
   }
 
-  .lg\:font-luloBold {
-    font-family: "Lulo Clean W01 One Bold", sans-serif;
+  .lg\:font-futuraPTMedium {
+    font-family: "Futura PT Medium", sans-serif;
+  }
+
+  .lg\:font-futuraPTMediumOblique {
+    font-family: "Futura PT MediumO blique", sans-serif;
+  }
+
+  .lg\:font-futuraPTLight {
+    font-family: "Futura PT Light", sans-serif;
+  }
+
+  .lg\:font-futuraPTLightOblique {
+    font-family: "Futura PT Light Oblique", sans-serif;
   }
 
   .lg\:font-hairline {
@@ -65808,12 +65879,24 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
-  .xl\:font-lulo {
-    font-family: "Lulo Clean W01 One", sans-serif;
+  .xl\:font-luloBold {
+    font-family: "Lulo Clean One Bold", sans-serif;
   }
 
-  .xl\:font-luloBold {
-    font-family: "Lulo Clean W01 One Bold", sans-serif;
+  .xl\:font-futuraPTMedium {
+    font-family: "Futura PT Medium", sans-serif;
+  }
+
+  .xl\:font-futuraPTMediumOblique {
+    font-family: "Futura PT MediumO blique", sans-serif;
+  }
+
+  .xl\:font-futuraPTLight {
+    font-family: "Futura PT Light", sans-serif;
+  }
+
+  .xl\:font-futuraPTLightOblique {
+    font-family: "Futura PT Light Oblique", sans-serif;
   }
 
   .xl\:font-hairline {
