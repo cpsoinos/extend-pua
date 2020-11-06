@@ -1,7 +1,7 @@
 import React from 'react'
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
 import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
+import { faMailBulk, faPhone, faEnvelope } from '@fortawesome/pro-regular-svg-icons'
 import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 
 export default {
@@ -38,15 +38,22 @@ const phone = {
   icon: faPhone
 }
 
-const mail = {
-  platform: 'mail',
-  handle: '(555) 867-5309',
+const email = {
+  platform: 'email',
+  handle: 'Email your elected official',
   url: 'tel:(555) 867-5309',
+  icon: faEnvelope
+}
+
+const meet = {
+  platform: 'meet',
+  handle: 'Virtually meet with your elected official',
+  url: 'https://www.extendpua.org/meet',
   icon: faMailBulk
 }
 
 const props = {
-  avatar: "https://www.congress.gov/img/member/115_sr_ca_harris_kamala_200.jpg",
+  branch: 'Senate',
   lastName: 'Harris',
   firstName: 'Kamala',
   party: 'D',
@@ -56,7 +63,8 @@ const props = {
   facebook,
   twitter,
   phone,
-  mail
+  email,
+  meet
 }
 
 export const Default = () => {

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
-import { SenatorSocialHandleRecord } from "types/SenatorSocialHandleRecord"
-import { useSenatorSocialHandles } from 'hooks/useSenatorSocialHandles'
+import { useCongressDatabase } from 'hooks/useCongressDatabase'
 import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
 import Switch from 'components/Switch/Switch'
 import { useUsStates } from 'hooks/useUsStates'
+import { CongressDbRecord } from 'types/CongressDatabaseResponse'
 
 const SenatorSocialHandles = () => {
-  const [senators, setSenators] = useState<SenatorSocialHandleRecord[]>([])
-  const [filteredSenators, filterSenators] = useState<SenatorSocialHandleRecord[]>([])
-  const { getSenatorSocialHandles } = useSenatorSocialHandles()
-  const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildMail } = useBuildSocialInfo()
+  const [senators, setSenators] = useState<CongressDbRecord[]>([])
+  const [filteredSenators, filterSenators] = useState<CongressDbRecord[]>([])
+  const { getCongressMembers } = useCongressDatabase()
+  const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
   const { addIndex, addDocuments, search } = useSearch()
 
   useEffect(() => {
     ['st', 'first', 'last', 'party', 'reElection'].map(addIndex)
-    getSenatorSocialHandles().then((data) => {
+    getCongressMembers().then((data) => {
       const sorted = sortBy(data, orderBy)
       setSenators(sorted)
       filterSenators(sorted)
@@ -45,7 +45,7 @@ const SenatorSocialHandles = () => {
     const query = event.currentTarget.value
     if (query === '') filterSenators(senators)
     else {
-      const results = search(query) as SenatorSocialHandleRecord[]
+      const results = search(query) as CongressDbRecord[]
       filterSenators(results)
     }
   }
@@ -97,20 +97,22 @@ const SenatorSocialHandles = () => {
       </div>
 
       <div className="flex flex-wrap mb-20">
-        {filteredSenators.map((senator, i) => {
+        {filteredSenators.map((congressPerson, i) => {
           return (
             <div className="flex w-full sm:flex-auto sm:w-1/2 px-2" key={i}>
               <CongressPersonCard
-                lastName={senator.last}
-                firstName={senator.first}
-                usState={senator.st}
-                party={senator.party}
-                upForReElection={+senator.reElection}
-                instagram={buildInstagram(senator)}
-                twitter={buildTwitter(senator)}
-                facebook={buildFacebook(senator)}
-                phone={buildPhone(senator)}
-                mail={buildMail(senator)}
+                branch={congressPerson.branch}
+                lastName={congressPerson.last}
+                firstName={congressPerson.first}
+                usState={congressPerson.st}
+                party={congressPerson.party}
+                // upForReElection={+congressPerson.reElection}
+                instagram={buildInstagram(congressPerson)}
+                twitter={buildTwitter(congressPerson)}
+                facebook={buildFacebook(congressPerson)}
+                phone={buildPhone(congressPerson)}
+                email={buildEmail(congressPerson)}
+                meet={buildMeet(congressPerson)}
               />
             </div>
           )

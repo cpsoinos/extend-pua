@@ -1,49 +1,58 @@
-import { SenatorSocialHandleRecord } from "types/SenatorSocialHandleRecord"
 import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
+import { faEnvelope, faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
+import { CongressDbRecord } from 'types/CongressDatabaseResponse'
 
 export const useBuildSocialInfo = () => {
-  const buildInstagram = (senator: SenatorSocialHandleRecord) => {
+  const buildInstagram = (congressPerson: CongressDbRecord) => {
     return {
       platform: 'instagram',
-      handle: senator.igHandle,
-      url: senator.igLink,
+      handle: congressPerson.igHandle,
+      url: congressPerson.igLink,
       icon: faInstagram
     }
   }
 
-  const buildFacebook = (senator: SenatorSocialHandleRecord) => {
+  const buildFacebook = (congressPerson: CongressDbRecord) => {
     return {
       platform: 'facebook',
-      handle: senator.facebookPage,
-      url: senator.facebookLink,
+      handle: congressPerson.facebookPage,
+      url: congressPerson.facebookLink,
       icon: faFacebook
     }
   }
 
-  const buildTwitter = (senator: SenatorSocialHandleRecord) => {
+  const buildTwitter = (congressPerson: CongressDbRecord) => {
     return {
       platform: 'twitter',
-      handle: senator.twitterHandle,
-      url: senator.twitterLink,
+      handle: congressPerson.twitterHandle,
+      url: congressPerson.twitterLink,
       icon: faTwitter
     }
   }
 
-  const buildPhone = (senator: SenatorSocialHandleRecord) => {
+  const buildPhone = (congressPerson: CongressDbRecord) => {
     return {
       platform: 'phone',
-      handle: senator.phoneNumber,
-      url: `tel:${senator.phoneNumber}`,
+      handle: congressPerson.phoneNumber,
+      url: `tel:${congressPerson.phoneNumber}`,
       icon: faPhone
     }
   }
 
-  const buildMail = (_senator?: SenatorSocialHandleRecord) => {
+  const buildEmail = (_congressPerson?: CongressDbRecord) => {
     return {
-      platform: 'mail',
-      handle: 'Write your senator',
+      platform: 'email',
+      handle: 'Email your elected official',
       url: 'https://www.extendpua.org/write',
+      icon: faEnvelope
+    }
+  }
+
+  const buildMeet = (_congressPerson?: CongressDbRecord) => {
+    return {
+      platform: 'virtual',
+      handle: 'Meet your elected official',
+      url: 'https://www.extendpua.org/meet',
       icon: faMailBulk
     }
   }
@@ -53,6 +62,7 @@ export const useBuildSocialInfo = () => {
     buildFacebook,
     buildTwitter,
     buildPhone,
-    buildMail
+    buildEmail,
+    buildMeet
   }
 }
