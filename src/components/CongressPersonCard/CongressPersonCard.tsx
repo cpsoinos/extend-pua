@@ -84,7 +84,7 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
 
       <div className="bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
         <div className="mb-4 leading-tight">
-          <p className="inline-block text-gray-600 font-futuraPTLight">{usState} - {party}</p>
+          <p className="inline-block text-xl text-gray-600 font-futuraPTLight">{usState} - {party}</p>
           <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
           <small className="inline-block text-gray-700 text-sm font-futuraPTLightOblique">Up for re-election in {upForReElection}</small>
         </div>
