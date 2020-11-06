@@ -64,6 +64,12 @@ module.exports = {
       fontSize: {
         xxs: '0.5rem',
       },
+      width: {
+        '80': '20rem'
+      },
+      height: {
+        '80': '20rem'
+      },
       minWidth: {
         '40': '10rem',
         '1/4': '25%',

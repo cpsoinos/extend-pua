@@ -74,10 +74,10 @@ const CongressSocialHandles = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-between items-center px-2 md:px-4 mt-4 mb-6">
+      <div className="flex flex-wrap justify-between items-center mt-4 mb-6">
 
         <div className="flex justify-center">
-          <label className="text-right mb-4 sm:mb-0">
+          <label className="text-right mb-4 md:mb-0">
             <span className="text-white mr-2">Sort:</span>
             <select className="text-gray-900 p-1 rounded-md" onChange={onOrderChange}>
               {sortOptions.map((sortOption, i) => {
@@ -87,7 +87,7 @@ const CongressSocialHandles = () => {
           </label>
         </div>
 
-        <div className="flex w-full sm:max-w-1/2">
+        <div className="flex w-full md:max-w-1/2">
           <input className="text-gray-900 rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
 
@@ -96,10 +96,10 @@ const CongressSocialHandles = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap mb-20">
+      <div className="flex flex-wrap justify-evenly mb-20">
         {filteredSenators.map((congressPerson, i) => {
           return (
-            <div className="flex w-full sm:flex-auto sm:w-1/2 px-2" key={i}>
+            <div className="flex w-full md:w-5/12 square" key={i}>
               <CongressPersonCard
                 branch={congressPerson.branch}
                 lastName={congressPerson.last}

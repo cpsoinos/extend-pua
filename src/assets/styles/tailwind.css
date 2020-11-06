@@ -73,4 +73,10 @@
   visibility: visible;
 }
 
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
 @tailwind utilities;

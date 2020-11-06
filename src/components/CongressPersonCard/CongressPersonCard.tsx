@@ -74,7 +74,7 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   }
 
   return (
-    <div className="sm:flex w-full mb-4 px-0 sm:px-2 sm:rounded-md rounded-t">
+    <div className="sm:flex w-full mb-4 sm:rounded-md rounded-t">
       <div className={imageWrapperClasses}>
         <Image className={imageClasses} {...imageProps} />
       </div>
