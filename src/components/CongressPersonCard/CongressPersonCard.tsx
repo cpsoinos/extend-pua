@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import SocialHandleLink from 'components/SocialHandleLink/SocialHandleLink'
-import { ReactComponent as LogoBlue } from 'assets/svgs/Handles_XPUAFooter_Blue-SVG.svg'
-import { ReactComponent as LogoRed } from 'assets/svgs/Handles_XPUAFooter_Red-SVG.svg'
-import { ReactComponent as LogoPurple } from 'assets/svgs/Handles_XPUAFooter_Purple-SVG.svg'
+
 import { CongressDbRecord } from 'types/CongressDbRecord'
 import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 import { useCloudinary } from 'hooks/useCloudinary'
+import Logo from 'components/Logo/Logo'
 
 export interface CongressPersonCardProps {
   congressPerson: CongressDbRecord
@@ -16,27 +15,6 @@ const branchMap = new Map([
   ['House', 'Representative'],
   ['Senate', 'Senator'],
 ])
-
-interface LogoProps {
-  party: 'D' | 'R' | 'I***'
-  className?: string
-}
-
-const Logo = (props: LogoProps) => {
-  const { party, className } = props
-
-  switch (party) {
-    case 'D': {
-      return <LogoBlue className={className} />
-    }
-    case 'R': {
-      return <LogoRed className={className} />
-    }
-    default: {
-      return <LogoPurple className={className} />
-    }
-  }
-}
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
   const { congressPerson } = props
@@ -146,4 +124,4 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   )
 }
 
-export default CongressPersonCard
+export default React.memo(CongressPersonCard)

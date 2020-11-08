@@ -118,4 +118,4 @@ const Button = (props: ButtonProps) => {
   return Element(element, btnProps, children)
 }
 
-export default Button
+export default React.memo(Button)
