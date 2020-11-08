@@ -100,4 +100,8 @@
   padding-bottom: 100%;
 }
 
+.congress-person-card {
+  height: 360px;
+}
+
 @tailwind utilities;

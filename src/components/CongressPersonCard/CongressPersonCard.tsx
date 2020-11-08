@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import SocialHandleLink from 'components/SocialHandleLink/SocialHandleLink'
-import { Image } from 'cloudinary-react'
 import { ReactComponent as LogoBlue } from 'assets/svgs/Handles_XPUAFooter_Blue-SVG.svg'
 import { ReactComponent as LogoRed } from 'assets/svgs/Handles_XPUAFooter_Red-SVG.svg'
 import { ReactComponent as LogoPurple } from 'assets/svgs/Handles_XPUAFooter_Purple-SVG.svg'
 import { CongressDbRecord } from 'types/CongressDbRecord'
 import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
+import { useCloudinary } from 'hooks/useCloudinary'
 
 export interface CongressPersonCardProps {
   congressPerson: CongressDbRecord
@@ -49,6 +49,27 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     reElection: upForReElection
   } = congressPerson
   const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
+  const [imageSrc, setImageSrc] = useState('')
+
+  const { src: fbSrc } = useCloudinary({
+    height: 360,
+    width: 272,
+    type: 'facebook',
+    publicId: congressPerson.facebookPage
+  })
+
+  const { src: twSrc } = useCloudinary({
+    height: 360,
+    width: 272,
+    type: 'twitter_name',
+    publicId: congressPerson.twitterHandle
+  })
+
+  useEffect(() => {
+    setImageSrc(fbSrc)
+  }, [fbSrc])
+
+  const onImageError = () => setImageSrc(twSrc)
 
   const socialHandles = {
     facebook: buildFacebook(congressPerson),
@@ -58,10 +79,6 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     meet: buildMeet(congressPerson),
     phone: buildPhone(congressPerson)
   }
-  const {
-    facebook,
-    twitter,
-  } = socialHandles
 
   const imageWrapperClasses = classNames(
     'flex',
@@ -95,24 +112,18 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     }
   )
 
-  const imageProps = {
-    cloudName: "extend-pua",
-    publicId: facebook.handle ? facebook.handle : twitter.handle,
-    type: facebook.handle ? "facebook" : "twitter_name",
-    dpr: "auto",
-    responsive: true,
-    crop: "fill",
-    gravity: 'face',
-    fetchFormat: 'auto',
-    responsiveUseBreakpoints: "true",
-    loading: "lazy",
-    alt: `${branchMap.get(branch)} ${lastName} ${firstName}`
-  }
-
   return (
-    <div className="sm:flex w-full mb-4 border border-gray-400 rounded shadow">
+    <div className="congress-person-card sm:flex w-full mb-4 rounded shadow">
       <div className={imageWrapperClasses}>
-        <Image className={imageClasses} {...imageProps} />
+        <img
+          className={imageClasses}
+          src={imageSrc}
+          onError={onImageError}
+          alt={`${branchMap.get(branch)} ${lastName} ${firstName}`}
+          loading="lazy"
+          height={360}
+          width={272}
+        />
       </div>
 
       <div className="relative bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">

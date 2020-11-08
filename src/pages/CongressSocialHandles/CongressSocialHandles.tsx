@@ -98,7 +98,7 @@ const CongressSocialHandles = () => {
       <div className="flex flex-wrap justify-evenly mb-20">
         {filteredCongressMembers.map((congressPerson, i) => {
           return (
-            <div className="container flex w-full md:w-1/2 px-1" key={i}>
+            <div className="inline-flex w-full md:w-1/2 px-1" key={i}>
               <CongressPersonCard congressPerson={congressPerson} />
             </div>
           )

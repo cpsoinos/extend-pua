@@ -29,6 +29,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-virtualized": "^9.22.2",
     "swr": "^0.3.8",
     "typescript": "~3.7.2"
   },
@@ -60,6 +61,7 @@
     "@types/js-search": "^1.4.0",
     "@types/lodash": "^4.14.157",
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-virtualized": "^9.21.10",
     "autoprefixer": "^9.8.4",
     "chromatic": "^5.0.0",
     "postcss-cli": "^7.1.1",
