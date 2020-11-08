@@ -2,12 +2,15 @@ import React from 'react'
 import classNames from 'classnames'
 import SocialHandleLink, { SocialHandleLinkProps } from 'components/SocialHandleLink/SocialHandleLink'
 import { Image } from 'cloudinary-react'
+import { ReactComponent as LogoBlue } from 'assets/svgs/Handles_XPUAFooter_Blue-SVG.svg'
+import { ReactComponent as LogoRed } from 'assets/svgs/Handles_XPUAFooter_Red-SVG.svg'
+import { ReactComponent as LogoPurple } from 'assets/svgs/Handles_XPUAFooter_Purple-SVG.svg'
 
 export interface CongressPersonCardProps {
   branch: string
   lastName: string
   firstName: string
-  party: string
+  party: 'D' | 'R' | 'I***'
   usState: string
   upForReElection?: number
   instagram: SocialHandleLinkProps
@@ -16,6 +19,32 @@ export interface CongressPersonCardProps {
   phone: SocialHandleLinkProps
   email: SocialHandleLinkProps
   meet: SocialHandleLinkProps
+}
+
+const branchMap = new Map([
+  ['House', 'Representative'],
+  ['Senate', 'Senator'],
+])
+
+interface LogoProps {
+  party: 'D' | 'R' | 'I***'
+  className?: string
+}
+
+const Logo = (props: LogoProps) => {
+  const { party, className } = props
+
+  switch (party) {
+    case 'D': {
+      return <LogoBlue className={className} />
+    }
+    case 'R': {
+      return <LogoRed className={className} />
+    }
+    default: {
+      return <LogoPurple className={className} />
+    }
+  }
 }
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
@@ -28,7 +57,7 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     'justify-center',
     'rounded-t',
     'sm:rounded-l',
-    'w-5/6',
+    'sm:w-5/6',
     'p-8',
     'sm:pl-4',
     'sm:pr-0',
@@ -55,19 +84,12 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     }
   )
 
-  const branchMap = new Map([
-    ['House', 'Representative'],
-    ['Senate', 'Senator'],
-  ])
-
   const imageProps = {
     cloudName: "extend-pua",
     publicId: facebook.handle ? facebook.handle : twitter.handle,
     type: facebook.handle ? "facebook" : "twitter_name",
     dpr: "auto",
     responsive: true,
-    width: 200,
-    height: 500,
     crop: "fill",
     gravity: 'face',
     fetchFormat: 'auto',
@@ -77,25 +99,26 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   }
 
   return (
-    <div className="sm:flex w-full mb-4 sm:rounded-md rounded-t">
+    <div className="sm:flex w-full mb-4 border border-gray-400 rounded shadow">
       <div className={imageWrapperClasses}>
         <Image className={imageClasses} {...imageProps} />
       </div>
 
-      <div className="bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
+      <div className="relative bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
         <div className="mb-4 leading-tight">
           <p className="inline-block text-xl text-gray-600 font-futuraPTLight">{usState} - {party}</p>
           <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
           <small className="inline-block text-gray-700 text-sm font-futuraPTLightOblique">Up for re-election in {upForReElection}</small>
         </div>
 
-        <ul>
+        <ul className="mb-12" >
           {socialHandles.map((socialHandle, i) => (
-            <li className="truncate font-futuraPTLight mb-2" key={i}>
+            <li className="font-futuraPTLight mb-2" key={i}>
               <SocialHandleLink {...socialHandle} />
             </li>
           ))}
         </ul>
+        <Logo className="absolute bottom-0" party={party} />
       </div>
     </div>
   )

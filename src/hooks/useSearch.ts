@@ -1,7 +1,7 @@
 import * as JsSearch from 'js-search'
 import { useState } from 'react'
 import { AWRAState } from 'types/AWRAState'
-import { CongressDbRecord } from 'types/CongressDatabaseResponse'
+import { CongressDbRecord } from 'types/CongressDbRecord'
 
 export const useSearch = () => {
   const [searchIndex,] = useState(new JsSearch.Search('_id'))

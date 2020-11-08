@@ -60,7 +60,7 @@ const props = {
   branch: 'Senate',
   lastName: 'Harris',
   firstName: 'Kamala',
-  party: 'D',
+  party: 'D' as const,
   usState: 'California',
   upForReElection: 2022,
   instagram,
@@ -71,9 +71,17 @@ const props = {
   meet
 }
 
-export const Default = () => {
+export const Desktop = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container flex w-full md:w-1/2">
+      <CongressPersonCard {...props} />
+    </div>
+  )
+}
+
+export const Mobile = () => {
+  return (
+    <div className="container flex w-full md:w-1/2">
       <CongressPersonCard {...props} />
     </div>
   )

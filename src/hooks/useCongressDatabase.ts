@@ -1,23 +1,9 @@
-import congressDbFixture from 'assets/CongressDatabase.json'
-import { CongressDbRecord } from 'types/CongressDatabaseResponse'
-import { camelizeKeys } from 'humps'
+import { CongressDatabaseResponse } from 'types/CongressDatabaseResponse'
 
 export const useCongressDatabase = () => {
   const getCongressMembers = async () => {
-    return (camelizeKeys(congressDbFixture) as Record<string, any>[]).map((record) => {
-      const st = record.sT
-      delete record.sT
-      const igHandle = record.iGHandle
-      const igLink = record.iGLink
-      delete record.iGHandle
-      delete record.iGLink
-      return {
-        ...record,
-        st,
-        igHandle,
-        igLink
-      }
-    }) as unknown as CongressDbRecord[]
+    const congressMembers: CongressDatabaseResponse = await (await (await fetch('https://www.extendpua.org/_functions/congressDatabase')).json())
+    return congressMembers.items
   }
 
   return { getCongressMembers }

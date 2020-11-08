@@ -1,4 +1,4 @@
-import { LinkCongressSocialHandlesAll } from './SenatorSocialHandleResponse'
+import { LinkCongressSocialHandlesAll } from './CongressDatabaseResponse'
 import { Party } from "./Party"
 
 export interface SenatorSocialHandleRecord {

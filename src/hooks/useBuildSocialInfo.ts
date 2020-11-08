@@ -1,12 +1,10 @@
-// import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-// import { faEnvelope, faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 import { ReactComponent as EmailIcon } from 'assets/icons/Handles_SocialIcon_Email.svg'
 import { ReactComponent as FacebookIcon } from 'assets/icons/Handles_SocialIcon_Facebook.svg'
 import { ReactComponent as InstagramIcon } from 'assets/icons/Handles_SocialIcon_Instagram.svg'
 import { ReactComponent as MeetIcon } from 'assets/icons/Handles_SocialIcon_Meet.svg'
 import { ReactComponent as PhoneIcon } from 'assets/icons/Handles_SocialIcon_Phone.svg'
 import { ReactComponent as TwitterIcon } from 'assets/icons/Handles_SocialIcon_Twitter.svg'
-import { CongressDbRecord } from 'types/CongressDatabaseResponse'
+import { CongressDbRecord } from 'types/CongressDbRecord'
 
 export const useBuildSocialInfo = () => {
   const buildInstagram = (congressPerson: CongressDbRecord) => {

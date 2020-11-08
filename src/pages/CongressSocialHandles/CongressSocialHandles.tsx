@@ -6,11 +6,11 @@ import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
 import Switch from 'components/Switch/Switch'
 import { useUsStates } from 'hooks/useUsStates'
-import { CongressDbRecord } from 'types/CongressDatabaseResponse'
+import { CongressDbRecord } from 'types/CongressDbRecord'
 
 const CongressSocialHandles = () => {
-  const [senators, setSenators] = useState<CongressDbRecord[]>([])
-  const [filteredSenators, filterSenators] = useState<CongressDbRecord[]>([])
+  const [congressMembers, setCongressMembers] = useState<CongressDbRecord[]>([])
+  const [filteredSenators, setFilteredSenators] = useState<CongressDbRecord[]>([])
   const { getCongressMembers } = useCongressDatabase()
   const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
@@ -20,14 +20,14 @@ const CongressSocialHandles = () => {
     ['st', 'first', 'last', 'party', 'reElection'].map(addIndex)
     getCongressMembers().then((data) => {
       const sorted = sortBy(data, orderBy)
-      setSenators(sorted)
-      filterSenators(sorted)
+      setCongressMembers(sorted)
+      setFilteredSenators(sorted)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    filterSenators(sortBy(filteredSenators, orderBy))
+    setFilteredSenators(sortBy(filteredSenators, orderBy))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderBy])
 
@@ -37,16 +37,16 @@ const CongressSocialHandles = () => {
   }
 
   useEffect(() => {
-    if (senators.length) addDocuments(senators)
+    if (congressMembers.length) addDocuments(congressMembers)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [senators])
+  }, [congressMembers])
 
   const onSearch = (event: React.FormEvent<HTMLInputElement>) => {
     const query = event.currentTarget.value
-    if (query === '') filterSenators(senators)
+    if (query === '') setFilteredSenators(congressMembers)
     else {
       const results = search(query) as CongressDbRecord[]
-      filterSenators(results)
+      setFilteredSenators(results)
     }
   }
 
@@ -56,12 +56,12 @@ const CongressSocialHandles = () => {
       const keyStates = ['KY', 'SC', 'OH', 'FL', 'NC', 'PA', 'WI', 'AZ', 'NY', 'ME'].map((abbr) => {
         return fullStateName(abbr)
       })
-      const filtered = senators.filter((senator) => {
+      const filtered = congressMembers.filter((senator) => {
         return keyStates.includes(senator.st) && senator.party === 'R'
       })
-      filterSenators(filtered)
+      setFilteredSenators(filtered)
     } else {
-      filterSenators(senators)
+      setFilteredSenators(congressMembers)
     }
   }
 
@@ -99,7 +99,7 @@ const CongressSocialHandles = () => {
       <div className="flex flex-wrap justify-evenly mb-20">
         {filteredSenators.map((congressPerson, i) => {
           return (
-            <div className="flex w-full md:w-5/12 square" key={i}>
+            <div className="container flex w-full md:w-1/2 px-1" key={i}>
               <CongressPersonCard
                 branch={congressPerson.branch}
                 lastName={congressPerson.last}
@@ -122,4 +122,4 @@ const CongressSocialHandles = () => {
   )
 }
 
-export default CongressSocialHandles;
+export default CongressSocialHandles
