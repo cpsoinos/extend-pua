@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
 import { useCongressDatabase } from 'hooks/useCongressDatabase'
-import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
 import Switch from 'components/Switch/Switch'
@@ -12,7 +11,6 @@ const CongressSocialHandles = () => {
   const [congressMembers, setCongressMembers] = useState<CongressDbRecord[]>([])
   const [filteredSenators, setFilteredSenators] = useState<CongressDbRecord[]>([])
   const { getCongressMembers } = useCongressDatabase()
-  const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
   const [orderBy, setOrderBy] = useState('st')
   const { addIndex, addDocuments, search } = useSearch()
 
@@ -100,20 +98,7 @@ const CongressSocialHandles = () => {
         {filteredSenators.map((congressPerson, i) => {
           return (
             <div className="container flex w-full md:w-1/2 px-1" key={i}>
-              <CongressPersonCard
-                branch={congressPerson.branch}
-                lastName={congressPerson.last}
-                firstName={congressPerson.first}
-                usState={congressPerson.st}
-                party={congressPerson.party}
-                // upForReElection={+congressPerson.reElection}
-                instagram={buildInstagram(congressPerson)}
-                twitter={buildTwitter(congressPerson)}
-                facebook={buildFacebook(congressPerson)}
-                phone={buildPhone(congressPerson)}
-                email={buildEmail(congressPerson)}
-                meet={buildMeet(congressPerson)}
-              />
+              <CongressPersonCard congressPerson={congressPerson} />
             </div>
           )
         })}

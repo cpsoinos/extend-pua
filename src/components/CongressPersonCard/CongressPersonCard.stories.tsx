@@ -1,12 +1,7 @@
 import React from 'react'
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
-import { ReactComponent as EmailIcon } from 'assets/icons/Handles_SocialIcon_Email.svg'
-import { ReactComponent as FacebookIcon } from 'assets/icons/Handles_SocialIcon_Facebook.svg'
-import { ReactComponent as InstagramIcon } from 'assets/icons/Handles_SocialIcon_Instagram.svg'
-import { ReactComponent as MeetIcon } from 'assets/icons/Handles_SocialIcon_Meet.svg'
-import { ReactComponent as PhoneIcon } from 'assets/icons/Handles_SocialIcon_Phone.svg'
-import { ReactComponent as TwitterIcon } from 'assets/icons/Handles_SocialIcon_Twitter.svg'
 import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
+import { CongressDbRecord } from 'types/CongressDbRecord'
 
 export default {
   title: 'components/CongressPersonCard',
@@ -14,67 +9,35 @@ export default {
   decorators: [withBaseStyles]
 }
 
-const instagram = {
-  platform: 'instagram' as const,
-  handle: '@KamalaHarris',
-  url: 'instagram.com/kamalaharris',
-  icon: InstagramIcon
-}
-
-const facebook = {
-  platform: 'facebook' as const,
-  handle: 'KamalaHarris',
-  url: 'facebook.com/kamalaharris',
-  icon: FacebookIcon
-}
-
-const twitter = {
-  platform: 'twitter' as const,
-  handle: '@KamalaHarris',
-  url: 'twitter.com/kamalaharris',
-  icon: TwitterIcon
-}
-
-const phone = {
-  platform: 'phone' as const,
-  handle: '(555) 867-5309',
-  url: 'tel:(555) 867-5309',
-  icon: PhoneIcon
-}
-
-const email = {
-  platform: 'email' as const,
-  handle: 'Email your elected official',
-  url: 'tel:(555) 867-5309',
-  icon: EmailIcon
-}
-
-const meet = {
-  platform: 'meet' as const,
-  handle: 'Virtually meet with your elected official',
-  url: 'https://www.extendpua.org/meet',
-  icon: MeetIcon
-}
-
-const props = {
-  branch: 'Senate',
-  lastName: 'Harris',
-  firstName: 'Kamala',
-  party: 'D' as const,
-  usState: 'California',
-  upForReElection: 2022,
-  instagram,
-  facebook,
-  twitter,
-  phone,
-  email,
-  meet
+const congressPerson: CongressDbRecord = {
+  abbrevRef: "VA",
+  branch: "Senate",
+  district: "VA",
+  email: "https://www.kaine.senate.gov/contact/share-your-opinion",
+  facebookLink: "http://www.facebook.com/SenatorKaine",
+  facebookPage: "SenatorKaine",
+  first: "Tim",
+  igHandle: "timkaine",
+  igLink: "http://www.instagram.com/timkaine",
+  last: "Kaine",
+  localPhone: "Abingdon: 276-525-4790↵Danville: 434-792-0976↵Manassas: 703-361-3192↵Richmond: 804-771-2221↵Roanoke: 540-682-5693↵Virginia Beach: 757-518-1674",
+  party: "D",
+  phoneNumber: "(202) 224-4024",
+  reElection: undefined,
+  st: "Virginia",
+  twitterHandle: "timkaine",
+  twitterLink: "http://www.twitter.com/",
+  website: "https://www.kaine.senate.gov",
+  createdDate: "2020-11-05T20:55:22.903Z",
+  id: "ea8495b5-0dc5-40be-8961-79aad5dd3dae",
+  owner: "82a6b187-ace8-480e-b77b-51e334bd4298",
+  updatedDate: "2020-11-05T20:57:23.183Z"
 }
 
 export const Desktop = () => {
   return (
     <div className="container flex w-full md:w-1/2">
-      <CongressPersonCard {...props} />
+      <CongressPersonCard congressPerson={congressPerson} />
     </div>
   )
 }
@@ -82,7 +45,7 @@ export const Desktop = () => {
 export const Mobile = () => {
   return (
     <div className="container flex w-full md:w-1/2">
-      <CongressPersonCard {...props} />
+      <CongressPersonCard congressPerson={congressPerson} />
     </div>
   )
 }

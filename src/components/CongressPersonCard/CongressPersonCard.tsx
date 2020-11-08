@@ -1,24 +1,15 @@
 import React from 'react'
 import classNames from 'classnames'
-import SocialHandleLink, { SocialHandleLinkProps } from 'components/SocialHandleLink/SocialHandleLink'
+import SocialHandleLink from 'components/SocialHandleLink/SocialHandleLink'
 import { Image } from 'cloudinary-react'
 import { ReactComponent as LogoBlue } from 'assets/svgs/Handles_XPUAFooter_Blue-SVG.svg'
 import { ReactComponent as LogoRed } from 'assets/svgs/Handles_XPUAFooter_Red-SVG.svg'
 import { ReactComponent as LogoPurple } from 'assets/svgs/Handles_XPUAFooter_Purple-SVG.svg'
+import { CongressDbRecord } from 'types/CongressDbRecord'
+import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 
 export interface CongressPersonCardProps {
-  branch: string
-  lastName: string
-  firstName: string
-  party: 'D' | 'R' | 'I***'
-  usState: string
-  upForReElection?: number
-  instagram: SocialHandleLinkProps
-  twitter: SocialHandleLinkProps
-  facebook: SocialHandleLinkProps
-  phone: SocialHandleLinkProps
-  email: SocialHandleLinkProps
-  meet: SocialHandleLinkProps
+  congressPerson: CongressDbRecord
 }
 
 const branchMap = new Map([
@@ -48,9 +39,29 @@ const Logo = (props: LogoProps) => {
 }
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
-  const { branch, lastName, firstName, party, usState, upForReElection, instagram, twitter, facebook, phone, email, meet } = props
+  const { congressPerson } = props
+  const {
+    branch,
+    last: lastName,
+    first: firstName,
+    party,
+    st: usState,
+    reElection: upForReElection
+  } = congressPerson
+  const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
 
-  const socialHandles = [facebook, twitter, instagram, email, meet, phone]
+  const socialHandles = {
+    facebook: buildFacebook(congressPerson),
+    twitter: buildTwitter(congressPerson),
+    instagram: buildInstagram(congressPerson),
+    email: buildEmail(congressPerson),
+    meet: buildMeet(congressPerson),
+    phone: buildPhone(congressPerson)
+  }
+  const {
+    facebook,
+    twitter,
+  } = socialHandles
 
   const imageWrapperClasses = classNames(
     'flex',
@@ -112,13 +123,13 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
         </div>
 
         <ul className="mb-12" >
-          {socialHandles.map((socialHandle, i) => (
+          {Object.values(socialHandles).map((socialHandle, i) => (
             <li className="font-futuraPTLight mb-2" key={i}>
               <SocialHandleLink {...socialHandle} />
             </li>
           ))}
         </ul>
-        <Logo className="absolute bottom-0" party={party} />
+        <Logo className="absolute bottom-0 pb-2 px-2" party={party} />
       </div>
     </div>
   )
