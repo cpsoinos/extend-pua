@@ -4,28 +4,30 @@ import { useCongressDatabase } from 'hooks/useCongressDatabase'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
 import Switch from 'components/Switch/Switch'
-import { useUsStates } from 'hooks/useUsStates'
 import { CongressDbRecord } from 'types/CongressDbRecord'
 
 const CongressSocialHandles = () => {
   const [congressMembers, setCongressMembers] = useState<CongressDbRecord[]>([])
-  const [filteredSenators, setFilteredSenators] = useState<CongressDbRecord[]>([])
+  const [filteredCongressMembers, setFilteredCongressMembers] = useState<CongressDbRecord[]>([])
   const { getCongressMembers } = useCongressDatabase()
   const [orderBy, setOrderBy] = useState('st')
+  const [branch, setBranch] = useState('Senate')
   const { addIndex, addDocuments, search } = useSearch()
 
   useEffect(() => {
-    ['st', 'first', 'last', 'party', 'reElection'].map(addIndex)
+    ['branch', 'st', 'first', 'last', 'party', 'reElection'].map(addIndex)
     getCongressMembers().then((data) => {
       const sorted = sortBy(data, orderBy)
       setCongressMembers(sorted)
-      setFilteredSenators(sorted)
+      setFilteredCongressMembers(sorted.filter((official) => {
+        return official.branch === branch
+      }))
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    setFilteredSenators(sortBy(filteredSenators, orderBy))
+    setFilteredCongressMembers(sortBy(filteredCongressMembers, orderBy))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderBy])
 
@@ -41,26 +43,20 @@ const CongressSocialHandles = () => {
 
   const onSearch = (event: React.FormEvent<HTMLInputElement>) => {
     const query = event.currentTarget.value
-    if (query === '') setFilteredSenators(congressMembers)
+    if (query === '') setFilteredCongressMembers(congressMembers)
     else {
       const results = search(query) as CongressDbRecord[]
-      setFilteredSenators(results)
+      setFilteredCongressMembers(results)
     }
   }
 
-  const { fullStateName } = useUsStates()
-  const onFilteredToKeyStates = (toggle: boolean) => {
-    if (toggle) {
-      const keyStates = ['KY', 'SC', 'OH', 'FL', 'NC', 'PA', 'WI', 'AZ', 'NY', 'ME'].map((abbr) => {
-        return fullStateName(abbr)
-      })
-      const filtered = congressMembers.filter((senator) => {
-        return keyStates.includes(senator.st) && senator.party === 'R'
-      })
-      setFilteredSenators(filtered)
-    } else {
-      setFilteredSenators(congressMembers)
-    }
+  const onFilteredToBranch = (val: boolean) => {
+    const branch = val ? 'House' : 'Senate'
+    setBranch(branch)
+    const results = congressMembers.filter((official) => {
+      return official.branch === branch
+    })
+    setFilteredCongressMembers(results)
   }
 
   const sortOptions = [
@@ -73,7 +69,6 @@ const CongressSocialHandles = () => {
   return (
     <>
       <div className="flex flex-wrap justify-between items-center mt-4 mb-6">
-
         <div className="flex justify-center">
           <label className="text-right mb-4 md:mb-0">
             <span className="text-white mr-2">Sort:</span>
@@ -90,12 +85,18 @@ const CongressSocialHandles = () => {
         </div>
 
         <div className="flex w-full justify-end">
-          <Switch className="text-white mt-4" label="Show only key states" name="filter_to_key_states" onChange={onFilteredToKeyStates} />
+          <Switch
+            className="text-white mt-4"
+            label="Branch"
+            name="filter_to_branch"
+            onChange={onFilteredToBranch}
+            knobLabels={{ on: 'House', off: 'Senate' }}
+          />
         </div>
       </div>
 
       <div className="flex flex-wrap justify-evenly mb-20">
-        {filteredSenators.map((congressPerson, i) => {
+        {filteredCongressMembers.map((congressPerson, i) => {
           return (
             <div className="container flex w-full md:w-1/2 px-1" key={i}>
               <CongressPersonCard congressPerson={congressPerson} />
