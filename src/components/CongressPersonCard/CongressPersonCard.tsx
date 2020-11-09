@@ -30,14 +30,14 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   const [imageSrc, setImageSrc] = useState('')
 
   const { src: fbSrc } = useCloudinary({
-    height: 360,
+    height: 460,
     width: 272,
     type: 'facebook',
     publicId: congressPerson.facebookPage
   })
 
   const { src: twSrc } = useCloudinary({
-    height: 360,
+    height: 460,
     width: 272,
     type: 'twitter_name',
     publicId: congressPerson.twitterHandle
@@ -99,12 +99,12 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
           onError={onImageError}
           alt={`${branchMap.get(branch)} ${lastName} ${firstName}`}
           loading="lazy"
-          height={360}
+          height={460}
           width={272}
         />
       </div>
 
-      <div className="relative bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
+      <div className="relative overflow-y-hidden bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
         <div className="mb-4 leading-tight">
           <p className="inline-block text-xl text-gray-600 font-futuraPTLight">{usState} - {party}</p>
           <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>

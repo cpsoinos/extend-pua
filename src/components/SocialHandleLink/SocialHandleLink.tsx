@@ -21,13 +21,10 @@ const SocialHandleButton = (props: SocialHandleLinkProps) => {
   const buttonName = `congress-person-card_${platform}`
 
   return (
-    <Button href={url} name={buttonName} className="flex items-center">
+    <Button href={url} name={buttonName} className="flex items-start">
       <>
         {(<SocialIcon height={24} width={24} className="inline-block mr-2" />)}
-        <span className="tooltip">
-          <span className="tooltip-text bg-black rounded text-white -ml-8 -mt-8">{handle}</span>
-          {handle}
-        </span>
+        <span className="text-left whitespace-pre-wrap">{handle}</span>
       </>
     </Button>
   )

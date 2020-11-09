@@ -101,7 +101,7 @@
 }
 
 .congress-person-card {
-  height: 360px;
+  /* height: 460px; */
 }
 
 @tailwind utilities;

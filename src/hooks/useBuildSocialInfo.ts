@@ -37,8 +37,7 @@ export const useBuildSocialInfo = () => {
   const buildPhone = (congressPerson: CongressDbRecord) => {
     return {
       platform: 'phone' as const,
-      handle: congressPerson.phoneNumber,
-      url: `tel:${congressPerson.phoneNumber}`,
+      handle: congressPerson.localPhone,
       icon: PhoneIcon
     }
   }

@@ -717,7 +717,7 @@ video {
 }
 
 .congress-person-card {
-  height: 360px;
+  /* height: 460px; */
 }
 
 .space-y-0 > :not(template) ~ :not(template) {

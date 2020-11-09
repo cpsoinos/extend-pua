@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Button from 'components/Button/Button'
+import classNames from 'classnames'
 
 interface PaginationProps {
   totalPages: number
@@ -21,7 +22,10 @@ const Pagination = (props: PaginationProps) => {
         return (
           <Button
             key={cursor}
-            className="px-4 py-2 mx-4 rounded-full bg-white text-black"
+            className={classNames("px-4 py-2 mx-4 rounded-full", {
+              'bg-white text-black': cursor + 1 !== currentPage,
+              'bg-blue-deep-sky text-white': cursor + 1 === currentPage
+            })}
             disabled={cursor + 1 === currentPage}
             onClick={() => setPage(cursor + 1)}
           >
