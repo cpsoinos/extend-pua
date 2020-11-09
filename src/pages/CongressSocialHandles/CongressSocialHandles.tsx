@@ -115,7 +115,7 @@ const CongressSocialHandles = () => {
           </label>
         </div>
 
-        <div className="flex md:max-w-1/2">
+        <div className="flex md:max-w-1/2 ml-2">
           <input className="text-gray-900 rounded-md w-full p-1 shadow" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
       </div>
