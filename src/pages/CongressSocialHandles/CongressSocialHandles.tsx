@@ -99,7 +99,7 @@ const CongressSocialHandles = () => {
         <div className="flex justify-center">
           <label>
             <span className="text-white mr-2">Sort:</span>
-            <select className="text-gray-900 p-1 rounded-md" onChange={onOrderChange}>
+            <select className="text-gray-900 p-1 rounded-md shadow" onChange={onOrderChange}>
               {sortOptions.map((sortOption, i) => {
                 return <option key={i} value={sortOption.value}>{sortOption.text}</option>
               })}
@@ -107,7 +107,7 @@ const CongressSocialHandles = () => {
           </label>
           <label className="ml-2">
             <span className="text-white mr-2">Branch:</span>
-            <select className="text-gray-900 p-1 rounded-md" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setBranch(event.target.value)}>
+            <select className="text-gray-900 p-1 rounded-md shadow" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setBranch(event.target.value)}>
               {branches.map((branch) => {
                 return <option key={branch} value={branch}>{branch}</option>
               })}
@@ -116,7 +116,7 @@ const CongressSocialHandles = () => {
         </div>
 
         <div className="flex md:max-w-1/2">
-          <input className="text-gray-900 rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
+          <input className="text-gray-900 rounded-md w-full p-1 shadow" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
       </div>
 
