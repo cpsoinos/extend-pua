@@ -37,14 +37,14 @@ const Header = () => {
       <div className="font-luloBold text-xxs md:text-base text-center text-white md:tracking-widest">
         <p className="inline-block">SENATE&nbsp;AND&nbsp;HOUSE CONTACT&nbsp;DATABASE</p>
         <span className="md:block lg:inline-block md:text-xs lg:text-base">
-          <span className="hidden lg:inline-block">&nbsp;|&nbsp;</span>
+          <span className="lg:inline-block">&nbsp;|&nbsp;</span>
           A&nbsp;RESOURCE&nbsp;FROM:
         </span>
       </div>
       <Button href="https://www.extendpua.org/">
         <img src={LOGO_BLUE_SRC} alt="ExtendPUA logo" />
       </Button>
-      <p className="font-luloBold text-center text-white text-xxs md:text-base md:tracking-widest">ADVOCATING FOR COMPREHENSIVE PANDEMIC RELIEF FOR ALL PEOPLE</p>
+      <p className="font-luloBold text-center text-white text-xxs md:text-base md:tracking-widest">ADVOCATING FOR COMPREHENSIVE PANDEMIC RELIEF FOR&nbsp;ALL&nbsp;PEOPLE</p>
       <nav className="hidden md:flex justify-evenly font-luloBold text-xs text-white bg-brand-red border-white border-solid border-2 mt-4">
         {links.map((link) => {
           return <Button key={link.text} href={link.url} name={link.name}>{link.text}</Button>
