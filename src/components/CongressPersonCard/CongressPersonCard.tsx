@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import SocialHandleLink from 'components/SocialHandleLink/SocialHandleLink'
-
+import Button from 'components/Button/Button'
 import { CongressDbRecord } from 'types/CongressDbRecord'
 import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 import { useCloudinary } from 'hooks/useCloudinary'
@@ -106,7 +106,7 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
 
       <div className="relative overflow-y-hidden bg-white sm:rounded-r rounded-b sm:rounded-bl-none p-2 leading-normal w-full overflow-auto">
         <div className="mb-4 leading-tight">
-          <p className="inline-block text-xl text-gray-600 font-futuraPTLight">{usState} - {party}</p>
+          <p className="inline-block text-xl text-gray-600 font-futuraPTLight">{usState} - {party} - {branch}</p>
           <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
           <small className="inline-block text-gray-700 text-sm font-futuraPTLightOblique">Up for re-election in {upForReElection}</small>
         </div>
@@ -118,7 +118,10 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
             </li>
           ))}
         </ul>
-        <Logo className="absolute bottom-0 pb-2 px-2" party={party} />
+        <Logo className="absolute bottom-0 pb-6 px-2" party={party} />
+        <small className="absolute bottom-0 right-0 pr-1">
+          <Button href="mailto:fyi@extendpua.org" name="report_inaccurate_information">Report inaccurate information</Button>
+        </small>
       </div>
     </div>
   )
