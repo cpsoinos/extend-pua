@@ -96,7 +96,10 @@ const Button = (props: ButtonProps) => {
     onBlur
   } = props
 
-  const classes = classNames('transition', 'ease-in', 'duration-200', `${className ? className : ''}`.trim())
+  const classes = classNames('transition', 'ease-in', 'duration-200', {
+    'cursor-not-allowed': disabled,
+    [`${className}`]: !!className
+  })
 
   const btnProps = pickBy({
     type: buttonType,
@@ -118,4 +121,4 @@ const Button = (props: ButtonProps) => {
   return Element(element, btnProps, children)
 }
 
-export default React.memo(Button)
+export default Button

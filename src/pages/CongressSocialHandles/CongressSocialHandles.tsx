@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
+import Pagination from 'components/Pagination/Pagination'
 import { useCongressDatabase } from 'hooks/useCongressDatabase'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
-import Switch from 'components/Switch/Switch'
+import Button from 'components/Button/Button'
 import { CongressDbRecord } from 'types/CongressDbRecord'
+import classNames from 'classnames'
 
 const CongressSocialHandles = () => {
   const [congressMembers, setCongressMembers] = useState<CongressDbRecord[]>([])
@@ -13,6 +15,9 @@ const CongressSocialHandles = () => {
   const [orderBy, setOrderBy] = useState('st')
   const [branch, setBranch] = useState('Senate')
   const { addIndex, addDocuments, search } = useSearch()
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const perPage = 50
 
   useEffect(() => {
     ['branch', 'st', 'first', 'last', 'party', 'reElection'].map(addIndex)
@@ -41,6 +46,14 @@ const CongressSocialHandles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [congressMembers])
 
+  useEffect(() => {
+    if (filteredCongressMembers.length % perPage) {
+      setTotalPages((filteredCongressMembers.length / perPage) + 1)
+    } else {
+      setTotalPages(filteredCongressMembers.length / perPage)
+    }
+  }, [filteredCongressMembers, perPage])
+
   const onSearch = (event: React.FormEvent<HTMLInputElement>) => {
     const query = event.currentTarget.value
     if (query === '') setFilteredCongressMembers(congressMembers)
@@ -50,14 +63,13 @@ const CongressSocialHandles = () => {
     }
   }
 
-  const onFilteredToBranch = (val: boolean) => {
-    const branch = val ? 'House' : 'Senate'
-    setBranch(branch)
+  useEffect(() => {
+    setPage(1)
     const results = congressMembers.filter((official) => {
       return official.branch === branch
     })
     setFilteredCongressMembers(results)
-  }
+  }, [branch, congressMembers])
 
   const sortOptions = [
     { value: 'st', text: 'State' },
@@ -84,25 +96,39 @@ const CongressSocialHandles = () => {
           <input className="text-gray-900 rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
 
-        <div className="flex w-full justify-end">
-          <Switch
-            className="text-white mt-4"
-            label="Branch"
-            name="filter_to_branch"
-            onChange={onFilteredToBranch}
-            knobLabels={{ on: 'House', off: 'Senate' }}
-          />
+        <div className="flex w-full justify-center items-center mt-6 space-x-4">
+          <Button
+            className={classNames('p-4', 'rounded', {
+              'bg-blue-deep-sky text-white': branch === 'Senate',
+              'bg-white text-black': branch === 'House'
+            })}
+            onClick={() => setBranch('Senate')}
+          >
+            Senate
+          </Button>
+
+          <Button
+            className={classNames('p-4', 'rounded', {
+              'bg-white text-black': branch === 'Senate',
+              'bg-blue-deep-sky text-white': branch === 'House',
+            })}
+            onClick={() => setBranch('House')}
+          >
+            House
+          </Button>
         </div>
       </div>
 
       <div className="flex flex-wrap justify-evenly mb-20">
-        {filteredCongressMembers.map((congressPerson, i) => {
+        {filteredCongressMembers.slice((page - 1) * perPage, page * perPage).map((congressPerson, i) => {
           return (
             <div className="inline-flex w-full md:w-1/2 px-1" key={i}>
               <CongressPersonCard congressPerson={congressPerson} />
             </div>
           )
         })}
+
+        <Pagination totalPages={totalPages} currentPage={page} setPage={setPage} />
       </div>
     </>
   )
