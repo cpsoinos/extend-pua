@@ -13,7 +13,7 @@ const CongressSocialHandles = () => {
   const [filteredCongressMembers, setFilteredCongressMembers] = useState<CongressDbRecord[]>([])
   const { getCongressMembers } = useCongressDatabase()
   const [orderBy, setOrderBy] = useState('st')
-  const [branch, setBranch] = useState('Senate')
+  const [branch, setBranch] = useState('All')
   const { addIndex, addDocuments, search } = useSearch()
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
@@ -24,16 +24,13 @@ const CongressSocialHandles = () => {
     getCongressMembers().then((data) => {
       const sorted = sortBy(data, orderBy)
       setCongressMembers(sorted)
-      setFilteredCongressMembers(sorted.filter((official) => {
-        return official.branch === branch
-      }))
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     setFilteredCongressMembers(sortBy(filteredCongressMembers, orderBy))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderBy])
 
   const onOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -43,7 +40,7 @@ const CongressSocialHandles = () => {
 
   useEffect(() => {
     if (congressMembers.length) addDocuments(congressMembers)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [congressMembers])
 
   useEffect(() => {
@@ -65,10 +62,14 @@ const CongressSocialHandles = () => {
 
   useEffect(() => {
     setPage(1)
-    const results = congressMembers.filter((official) => {
-      return official.branch === branch
-    })
-    setFilteredCongressMembers(results)
+    if (branch === 'All') {
+      setFilteredCongressMembers(congressMembers)
+    } else {
+      const results = congressMembers.filter((official) => {
+        return official.branch === branch
+      })
+      setFilteredCongressMembers(results)
+    }
   }, [branch, congressMembers])
 
   const sortOptions = [
@@ -98,9 +99,19 @@ const CongressSocialHandles = () => {
 
         <div className="flex w-full justify-center items-center mt-6 space-x-4">
           <Button
-            className={classNames('p-4', 'rounded', {
+            className={classNames('w-20', 'p-4', 'rounded', {
+              'bg-brand-blue text-white': branch === 'All',
+              'bg-white text-black': branch !== 'All'
+            })}
+            onClick={() => setBranch('All')}
+          >
+            All
+          </Button>
+
+          <Button
+            className={classNames('w-20', 'p-4', 'rounded', {
               'bg-brand-blue text-white': branch === 'Senate',
-              'bg-white text-black': branch === 'House'
+              'bg-white text-black': branch !== 'Senate'
             })}
             onClick={() => setBranch('Senate')}
           >
@@ -108,9 +119,9 @@ const CongressSocialHandles = () => {
           </Button>
 
           <Button
-            className={classNames('p-4', 'rounded', {
-              'bg-white text-black': branch === 'Senate',
+            className={classNames('w-20', 'p-4', 'rounded', {
               'bg-brand-blue text-white': branch === 'House',
+              'bg-white text-black': branch !== 'House',
             })}
             onClick={() => setBranch('House')}
           >
