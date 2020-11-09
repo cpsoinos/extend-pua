@@ -90,6 +90,8 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
 
   const imageClasses = classNames(
     'sm:h-auto',
+    'shadow-lg',
+    'sm:shadow-none',
     'flex-none',
     'rounded',
     'sm:rounded-none',
