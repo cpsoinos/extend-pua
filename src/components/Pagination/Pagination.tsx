@@ -24,7 +24,7 @@ const Pagination = (props: PaginationProps) => {
             key={cursor}
             className={classNames("px-4 py-2 mx-4 rounded-full", {
               'bg-white text-black': cursor + 1 !== currentPage,
-              'bg-blue-deep-sky text-white': cursor + 1 === currentPage
+              'bg-brand-blue text-white': cursor + 1 === currentPage
             })}
             disabled={cursor + 1 === currentPage}
             onClick={() => setPage(cursor + 1)}

@@ -99,7 +99,7 @@ const CongressSocialHandles = () => {
         <div className="flex w-full justify-center items-center mt-6 space-x-4">
           <Button
             className={classNames('p-4', 'rounded', {
-              'bg-blue-deep-sky text-white': branch === 'Senate',
+              'bg-brand-blue text-white': branch === 'Senate',
               'bg-white text-black': branch === 'House'
             })}
             onClick={() => setBranch('Senate')}
@@ -110,7 +110,7 @@ const CongressSocialHandles = () => {
           <Button
             className={classNames('p-4', 'rounded', {
               'bg-white text-black': branch === 'Senate',
-              'bg-blue-deep-sky text-white': branch === 'House',
+              'bg-brand-blue text-white': branch === 'House',
             })}
             onClick={() => setBranch('House')}
           >

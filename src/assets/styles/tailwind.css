@@ -78,7 +78,7 @@
   content: attr(content-on);
   /* knob is 40px wide, so equivalent to `right: 4px;` but this applies the transition */
   left: calc(100% - 44px);
-  @apply bg-blue-deep-sky;
+  @apply bg-brand-blue;
   @apply text-white;
 }
 

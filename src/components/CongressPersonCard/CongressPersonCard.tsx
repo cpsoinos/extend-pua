@@ -69,9 +69,9 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     'sm:pr-0',
     'sm:py-0',
     {
-      'bg-background-blue': party === 'D',
-      'bg-red-flag': party === 'R',
-      'bg-gray-400': party === 'I***'
+      'bg-brand-blue': party === 'D',
+      'bg-brand-red': party === 'R',
+      'bg-brand-purple': !['D', 'R'].includes(party)
     }
   )
 
@@ -84,9 +84,9 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
     'overflow-hidden',
     'sm:w-full',
     {
-      'border-background-blue': party === 'D',
-      'border-red-flag': party === 'R',
-      'border-gray-400': party === 'I***'
+      'border-brand-blue': party === 'D',
+      'border-brand-red': party === 'R',
+      'bg-brand-purple': !['D', 'R'].includes(party)
     }
   )
 

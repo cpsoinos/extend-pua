@@ -12,16 +12,12 @@ module.exports = {
     colors: {
       ...colors,
       brand: {
-        facebook: '#1877f2',
-        twitter: '#1DA1F2'
-      },
-      red: {
-        ...colors.red,
-        'flag': '#d10000'
+        red: '#d10000',
+        blue: '#00b3ff',
+        purple: '#50055E'
       },
       blue: {
         ...colors.blue,
-        'deep-sky': '#00b3ff',
         'tier-6': '#0012FF',
         'tier-5': '#005BFF',
         'tier-4': '#0098FF',
@@ -37,10 +33,6 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        // lulo: [
-        //   '"Lulo Clean One"',
-        //   'sans-serif'
-        // ],
         luloBold: [
           '"Lulo Clean One Bold"',
           'sans-serif'
