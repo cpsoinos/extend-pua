@@ -80,9 +80,9 @@ const CongressSocialHandles = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-between items-center mt-8 mb-6">
+      <div className="flex justify-between items-end mt-8 mb-6">
         <div className="flex justify-center">
-          <label className="mb-4 md:mb-0">
+          <label>
             <span className="text-white mr-2">Sort:</span>
             <select className="text-gray-900 p-1 rounded-md" onChange={onOrderChange}>
               {sortOptions.map((sortOption, i) => {
@@ -90,7 +90,7 @@ const CongressSocialHandles = () => {
               })}
             </select>
           </label>
-          <label className="mb-4 md:mb-0 ml-2">
+          <label className="ml-2">
             <span className="text-white mr-2">Branch:</span>
             <select className="text-gray-900 p-1 rounded-md" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setBranch(event.target.value)}>
               {branches.map((branch) => {
