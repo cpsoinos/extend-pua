@@ -5,8 +5,13 @@ import { useCongressDatabase } from 'hooks/useCongressDatabase'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
 import { CongressDbRecord } from 'types/CongressDbRecord'
+import { useProPublica } from 'hooks/useProPublica'
+import { Member } from 'types/ProPublicaMembersResponse'
 
 const CongressSocialHandles = () => {
+  const [senate, setSenate] = useState<Member[]>([])
+  const [house, setHouse] = useState<Member[]>([])
+  const { getBranch } = useProPublica()
   const [congressMembers, setCongressMembers] = useState<CongressDbRecord[]>([])
   const [filteredCongressMembers, setFilteredCongressMembers] = useState<CongressDbRecord[]>([])
   const { getCongressMembers } = useCongressDatabase()
@@ -19,6 +24,8 @@ const CongressSocialHandles = () => {
 
   useEffect(() => {
     ['branch', 'st', 'first', 'last', 'party', 'reElection'].map(addIndex)
+    getBranch('senate').then(setSenate)
+    getBranch('house').then(setHouse)
     getCongressMembers().then((data) => {
       const sorted = sortBy(data, orderBy)
       setCongressMembers(sorted)
@@ -78,6 +85,14 @@ const CongressSocialHandles = () => {
   ]
   const branches = ['All', 'Senate', 'House']
 
+  const findNextElection = (congressPerson: CongressDbRecord) => {
+    const collection = congressPerson.branch === 'Senate' ? senate : house
+    const proPublicaMember = collection.find((member) => {
+      return member.state === congressPerson.abbrev_ref && (member.last_name === congressPerson.last || member.facebook_account?.toLocaleLowerCase() === congressPerson.facebookPage?.toLocaleLowerCase() || member.twitter_account?.toLocaleLowerCase() === congressPerson.twitterHandle?.toLocaleLowerCase())
+    })
+    return proPublicaMember ? proPublicaMember.next_election : ''
+  }
+
   return (
     <>
       <div className="flex justify-between items-end mt-8 mb-6">
@@ -109,7 +124,7 @@ const CongressSocialHandles = () => {
         {filteredCongressMembers.slice((page - 1) * perPage, page * perPage).map((congressPerson, i) => {
           return (
             <div className="inline-flex w-full lg:w-1/2 px-1" key={i}>
-              <CongressPersonCard congressPerson={congressPerson} />
+              <CongressPersonCard congressPerson={congressPerson} nextElection={findNextElection(congressPerson)} />
             </div>
           )
         })}

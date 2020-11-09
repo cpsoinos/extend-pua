@@ -15,7 +15,7 @@ export interface CongressDbRecord {
   facebookPage: string
   facebookLink: string
   phoneNumber: string
-  abbrevRef: string
+  abbrev_ref: string
   email: string
   website: string
   localPhone: string

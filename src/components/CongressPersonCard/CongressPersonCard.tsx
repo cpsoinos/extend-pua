@@ -10,6 +10,7 @@ import useWindowDimensions from 'hooks/useWindowDimensions'
 
 export interface CongressPersonCardProps {
   congressPerson: CongressDbRecord
+  nextElection?: string
 }
 
 const branchMap = new Map([
@@ -20,14 +21,13 @@ const branchMap = new Map([
 const imageWidth = 272
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
-  const { congressPerson } = props
+  const { congressPerson, nextElection } = props
   const {
     branch,
     last: lastName,
     first: firstName,
     party,
     st: usState,
-    reElection: upForReElection
   } = congressPerson
   const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
   const [imageSrc, setImageSrc] = useState('')
@@ -121,7 +121,7 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
         <div className="mb-4 leading-tight">
           <p className="inline-block text-xl text-gray-600 font-futuraPTLight">{usState} - {party} - {branch}</p>
           <h3 className="text-gray-900 font-bold text-xl font-luloBold">{firstName} {lastName}</h3>
-          <small className="inline-block text-gray-700 text-sm font-futuraPTLightOblique">Up for re-election in {upForReElection}</small>
+          <small className="inline-block text-gray-700 text-sm font-futuraPTLightOblique">Up for re-election in {nextElection}</small>
         </div>
 
         <ul className="mb-12" >

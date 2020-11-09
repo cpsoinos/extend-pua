@@ -10,7 +10,7 @@ export default {
 }
 
 const congressPerson: CongressDbRecord = {
-  abbrevRef: "VA",
+  abbrev_ref: "VA",
   branch: "Senate",
   district: "VA",
   email: "https://www.kaine.senate.gov/contact/share-your-opinion",
