@@ -19,6 +19,8 @@ const branchMap = new Map([
 ])
 
 const imageWidth = 272
+const mobileImageHeight = 272
+const desktopImageHeight = 460
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
   const { congressPerson, nextElection } = props
@@ -32,13 +34,13 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
   const [imageSrc, setImageSrc] = useState('')
   const { width: windowWidth } = useWindowDimensions()
-  const [imageHeight, setImageHeight] = useState(460)
+  const [imageHeight, setImageHeight] = useState(mobileImageHeight)
 
   useEffect(() => {
     if (windowWidth < 768) {
-      setImageHeight(imageWidth)
+      setImageHeight(mobileImageHeight)
     } else {
-      setImageHeight(460)
+      setImageHeight(desktopImageHeight)
     }
   }, [windowWidth])
 
@@ -114,7 +116,7 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
           onError={onImageError}
           alt={`${branchMap.get(branch)} ${lastName} ${firstName}`}
           loading="lazy"
-          height={460}
+          height={imageHeight}
           width={272}
         />
       </div>
