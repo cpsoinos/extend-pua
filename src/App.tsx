@@ -5,7 +5,7 @@ import CongressSocialHandles from 'pages/CongressSocialHandles/CongressSocialHan
 
 const App = () => {
   return (
-    <div className="relative">
+    <div className="relative font-futuraPTMedium">
       <div className="absolute">
         <div className="fixed h-full w-full">
           <div className="handles-bg absolute bg-fixed bg-cover bg-top w-full h-full bg-no-repeat"></div>

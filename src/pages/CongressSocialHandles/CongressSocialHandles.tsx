@@ -4,9 +4,7 @@ import Pagination from 'components/Pagination/Pagination'
 import { useCongressDatabase } from 'hooks/useCongressDatabase'
 import { useSearch } from 'hooks/useSearch'
 import sortBy from 'lodash/sortBy'
-import Button from 'components/Button/Button'
 import { CongressDbRecord } from 'types/CongressDbRecord'
-import classNames from 'classnames'
 
 const CongressSocialHandles = () => {
   const [congressMembers, setCongressMembers] = useState<CongressDbRecord[]>([])
@@ -78,16 +76,25 @@ const CongressSocialHandles = () => {
     { value: 'reElection', text: 'Re-election' },
     { value: 'last', text: 'Name' },
   ]
+  const branches = ['All', 'Senate', 'House']
 
   return (
     <>
       <div className="flex flex-wrap justify-between items-center mt-8 mb-6">
         <div className="flex justify-center">
-          <label className="text-right mb-4 md:mb-0">
+          <label className="mb-4 md:mb-0">
             <span className="text-white mr-2">Sort:</span>
             <select className="text-gray-900 p-1 rounded-md" onChange={onOrderChange}>
               {sortOptions.map((sortOption, i) => {
                 return <option key={i} value={sortOption.value}>{sortOption.text}</option>
+              })}
+            </select>
+          </label>
+          <label className="mb-4 md:mb-0 ml-2">
+            <span className="text-white mr-2">Branch:</span>
+            <select className="text-gray-900 p-1 rounded-md" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setBranch(event.target.value)}>
+              {branches.map((branch) => {
+                return <option key={branch} value={branch}>{branch}</option>
               })}
             </select>
           </label>
@@ -96,44 +103,12 @@ const CongressSocialHandles = () => {
         <div className="flex w-full md:max-w-1/2">
           <input className="text-gray-900 rounded-md w-full p-1" type="search" placeholder="Search..." onInput={onSearch}></input>
         </div>
-
-        <div className="flex w-full justify-center items-center mt-6 space-x-4">
-          <Button
-            className={classNames('w-20', 'p-4', 'rounded', {
-              'bg-brand-blue text-white': branch === 'All',
-              'bg-white text-black': branch !== 'All'
-            })}
-            onClick={() => setBranch('All')}
-          >
-            All
-          </Button>
-
-          <Button
-            className={classNames('w-20', 'p-4', 'rounded', {
-              'bg-brand-blue text-white': branch === 'Senate',
-              'bg-white text-black': branch !== 'Senate'
-            })}
-            onClick={() => setBranch('Senate')}
-          >
-            Senate
-          </Button>
-
-          <Button
-            className={classNames('w-20', 'p-4', 'rounded', {
-              'bg-brand-blue text-white': branch === 'House',
-              'bg-white text-black': branch !== 'House',
-            })}
-            onClick={() => setBranch('House')}
-          >
-            House
-          </Button>
-        </div>
       </div>
 
       <div className="flex flex-wrap justify-evenly mb-20">
         {filteredCongressMembers.slice((page - 1) * perPage, page * perPage).map((congressPerson, i) => {
           return (
-            <div className="inline-flex w-full md:w-1/2 px-1" key={i}>
+            <div className="inline-flex w-full lg:w-1/2 px-1" key={i}>
               <CongressPersonCard congressPerson={congressPerson} />
             </div>
           )
