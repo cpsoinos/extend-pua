@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Button from 'components/Button/Button'
+import { ReactComponent as ChevronLeft } from 'assets/icons/bx-chevron-left-circle.svg'
+import { ReactComponent as ChevronRight } from 'assets/icons/bx-chevron-right-circle.svg'
 import classNames from 'classnames'
 
 interface PaginationProps {
@@ -10,29 +12,29 @@ interface PaginationProps {
 
 const Pagination = (props: PaginationProps) => {
   const { totalPages, currentPage, setPage } = props
-  const [pagesArray, setPagesArray] = useState<number[]>([])
-
-  useEffect(() => {
-    setPagesArray([...Array(Math.ceil(totalPages)).keys()])
-  }, [totalPages])
 
   return (
     <div className="flex w-full align-center justify-center">
-      {pagesArray.map((cursor) => {
-        return (
-          <Button
-            key={cursor}
-            className={classNames("px-4 py-2 mx-4 rounded-full", {
-              'bg-white text-black': cursor + 1 !== currentPage,
-              'bg-brand-blue text-white': cursor + 1 === currentPage
-            })}
-            disabled={cursor + 1 === currentPage}
-            onClick={() => setPage(cursor + 1)}
-          >
-            {cursor + 1}
-          </Button>
-        )
-      })}
+      <Button
+        className={classNames('px-4 py-2 mx-4 rounded-full text-black', { 'invisible': currentPage === 1 })}
+        onClick={() => setPage(currentPage - 1)}
+      >
+        <ChevronLeft />
+      </Button>
+
+      <Button
+        className="px-4 py-2 mx-4 rounded-full bg-brand-blue text-white"
+        disabled
+      >
+        {currentPage}
+      </Button>
+
+      <Button
+        className={classNames('px-4 py-2 mx-4 rounded-full text-black', { 'invisible': currentPage === totalPages })}
+        onClick={() => setPage(currentPage + 1)}
+      >
+        <ChevronRight />
+      </Button>
     </div>
   )
 }
