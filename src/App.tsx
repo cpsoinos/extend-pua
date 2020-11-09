@@ -13,11 +13,11 @@ const App = () => {
       </div>
       <div className="relative container mx-auto py-4 px-2">
         <Header />
-          <CongressSocialHandles />
+        <CongressSocialHandles />
         <Footer />
       </div>
     </div>
   )
 }
 
-export default App;
+export default App

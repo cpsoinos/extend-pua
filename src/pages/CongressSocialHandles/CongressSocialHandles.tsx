@@ -81,7 +81,7 @@ const CongressSocialHandles = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-between items-center mt-4 mb-6">
+      <div className="flex flex-wrap justify-between items-center mt-8 mb-6">
         <div className="flex justify-center">
           <label className="text-right mb-4 md:mb-0">
             <span className="text-white mr-2">Sort:</span>
