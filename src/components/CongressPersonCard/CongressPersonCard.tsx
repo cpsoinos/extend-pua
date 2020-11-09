@@ -6,6 +6,7 @@ import { CongressDbRecord } from 'types/CongressDbRecord'
 import { useBuildSocialInfo } from 'hooks/useBuildSocialInfo'
 import { useCloudinary } from 'hooks/useCloudinary'
 import Logo from 'components/Logo/Logo'
+import useWindowDimensions from 'hooks/useWindowDimensions'
 
 export interface CongressPersonCardProps {
   congressPerson: CongressDbRecord
@@ -15,6 +16,8 @@ const branchMap = new Map([
   ['House', 'Representative'],
   ['Senate', 'Senator'],
 ])
+
+const imageWidth = 272
 
 const CongressPersonCard = (props: CongressPersonCardProps) => {
   const { congressPerson } = props
@@ -28,17 +31,27 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
   } = congressPerson
   const { buildInstagram, buildFacebook, buildTwitter, buildPhone, buildEmail, buildMeet } = useBuildSocialInfo()
   const [imageSrc, setImageSrc] = useState('')
+  const { width: windowWidth } = useWindowDimensions()
+  const [imageHeight, setImageHeight] = useState(460)
+
+  useEffect(() => {
+    if (windowWidth < 768) {
+      setImageHeight(imageWidth)
+    } else {
+      setImageHeight(460)
+    }
+  }, [windowWidth])
 
   const { src: fbSrc } = useCloudinary({
-    height: 460,
-    width: 272,
+    height: imageHeight,
+    width: imageWidth,
     type: 'facebook',
     publicId: congressPerson.facebookPage
   })
 
   const { src: twSrc } = useCloudinary({
-    height: 460,
-    width: 272,
+    height: imageHeight,
+    width: imageWidth,
     type: 'twitter_name',
     publicId: congressPerson.twitterHandle
   })
