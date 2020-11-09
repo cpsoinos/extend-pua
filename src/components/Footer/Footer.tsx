@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="flex flex-wrap text-white font-luloBold mt-8">
       <div className="w-full max-w-1/2 sm:max-w-1/3">
-        <Button href="https://www.crisistextline.org/" className="bg-red-flag p-1 text-xxs rounded-md hover:bg-blue-deep-sky">
+        <Button href="https://www.crisistextline.org/" className="bg-brand-red p-1 text-xxs rounded-md hover:bg-brand-blue">
           In a crisis?
         </Button>
       </div>
@@ -13,7 +13,7 @@ const Footer = () => {
         © 2020 ExtendPUA.org
       </div>
       <div className="w-full sm:max-w-1/3 text-center mt-4 sm:mt-0 sm:text-right">
-        <Button href="https://www.extendpua.org/donate" className="block text-blue-deep-sky underline text-xxs hover:text-white">Donate</Button>
+        <Button href="https://www.extendpua.org/donate" className="block text-brand-blue underline text-xxs hover:text-white">Donate</Button>
 
         <div className="space-x-4 mt-4 mb-2">
           <Button className="inline-block" href="https://www.facebook.com/extendpua">
@@ -29,7 +29,7 @@ const Footer = () => {
           </Button>
         </div>
 
-        <Button href="https://www.extendpua.org/contact-us" className="bg-red-flag p-1 text-xxs rounded-md hover:bg-blue-deep-sky">
+        <Button href="https://www.extendpua.org/contact-us" className="bg-brand-red p-1 text-xxs rounded-md hover:bg-brand-blue">
           Contact us
         </Button>
       </div>
@@ -41,7 +41,7 @@ const Footer = () => {
           Senate social handles list courtesy JOE BEUMER{' '}
           <Button className="underline" href="http://www.instagram.com/beanartshero">
             <>
-              <span>@BE</span><span className="text-red-flag">AN</span>ARTS<span className="text-red-flag">HERO</span>
+              <span>@BE</span><span className="text-brand-red">AN</span>ARTS<span className="text-brand-red">HERO</span>
             </>
           </Button>
         </p>

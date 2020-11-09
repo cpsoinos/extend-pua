@@ -1,8 +1,7 @@
 import React from 'react'
 import CongressPersonCard from 'components/CongressPersonCard/CongressPersonCard'
-import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faMailBulk, faPhone } from '@fortawesome/pro-regular-svg-icons'
 import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
+import { CongressDbRecord } from 'types/CongressDbRecord'
 
 export default {
   title: 'components/CongressPersonCard',
@@ -10,59 +9,43 @@ export default {
   decorators: [withBaseStyles]
 }
 
-const instagram = {
-  platform: 'instagram',
-  handle: '@KamalaHarris',
-  url: 'instagram.com/kamalaharris',
-  icon: faInstagram
+const congressPerson: CongressDbRecord = {
+  abbrev_ref: "VA",
+  branch: "Senate",
+  district: "VA",
+  email: "https://www.kaine.senate.gov/contact/share-your-opinion",
+  facebookLink: "http://www.facebook.com/SenatorKaine",
+  facebookPage: "SenatorKaine",
+  first: "Tim",
+  igHandle: "timkaine",
+  igLink: "http://www.instagram.com/timkaine",
+  last: "Kaine",
+  localPhone: "Abingdon: 276-525-4790↵Danville: 434-792-0976↵Manassas: 703-361-3192↵Richmond: 804-771-2221↵Roanoke: 540-682-5693↵Virginia Beach: 757-518-1674",
+  party: "D",
+  phoneNumber: "(202) 224-4024",
+  reElection: undefined,
+  st: "Virginia",
+  twitterHandle: "timkaine",
+  twitterLink: "http://www.twitter.com/",
+  website: "https://www.kaine.senate.gov",
+  createdDate: "2020-11-05T20:55:22.903Z",
+  id: "ea8495b5-0dc5-40be-8961-79aad5dd3dae",
+  owner: "82a6b187-ace8-480e-b77b-51e334bd4298",
+  updatedDate: "2020-11-05T20:57:23.183Z"
 }
 
-const facebook = {
-  platform: 'facebook',
-  handle: 'KamalaHarris',
-  url: 'facebook.com/kamalaharris',
-  icon: faFacebook
-}
-
-const twitter = {
-  platform: 'twitter',
-  handle: '@KamalaHarris',
-  url: 'twitter.com/kamalaharris',
-  icon: faTwitter
-}
-
-const phone = {
-  platform: 'phone',
-  handle: '(555) 867-5309',
-  url: 'tel:(555) 867-5309',
-  icon: faPhone
-}
-
-const mail = {
-  platform: 'mail',
-  handle: '(555) 867-5309',
-  url: 'tel:(555) 867-5309',
-  icon: faMailBulk
-}
-
-const props = {
-  avatar: "https://www.congress.gov/img/member/115_sr_ca_harris_kamala_200.jpg",
-  lastName: 'Harris',
-  firstName: 'Kamala',
-  party: 'D',
-  usState: 'CA',
-  upForReElection: 2022,
-  instagram,
-  facebook,
-  twitter,
-  phone,
-  mail
-}
-
-export const Default = () => {
+export const Desktop = () => {
   return (
-    <div className="container mx-auto">
-      <CongressPersonCard {...props} />
+    <div className="container flex w-full md:w-1/2">
+      <CongressPersonCard congressPerson={congressPerson} />
+    </div>
+  )
+}
+
+export const Mobile = () => {
+  return (
+    <div className="container flex w-full md:w-1/2">
+      <CongressPersonCard congressPerson={congressPerson} />
     </div>
   )
 }

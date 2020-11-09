@@ -1,4 +1,4 @@
-import { LinkSenatorSocialHandlesAll } from './SenatorSocialHandleResponse'
+import { LinkCongressSocialHandlesAll } from './CongressDatabaseResponse'
 import { Party } from "./Party"
 
 export interface SenatorSocialHandleRecord {
@@ -22,5 +22,5 @@ export interface SenatorSocialHandleRecord {
   twitterLink: string
   facebookLink: string
   facebookPage: string
-  "link-senator-social-handles-all": LinkSenatorSocialHandlesAll
+  "link-senator-social-handles-all": LinkCongressSocialHandlesAll
 }

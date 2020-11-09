@@ -99,7 +99,7 @@ const StateCard = (props: StateCardProps) => {
               {!isNaN(usStateWeeklyLivingWage) && (
                 <>
                   <dt className="inline-block w-3/4">Weekly living wage:*</dt>
-                  <dd className="inline-flex justify-between w-1/4 text-red-flag">
+                  <dd className="inline-flex justify-between w-1/4 text-brand-red">
                     <span className="inline-flex">-</span>
                     <span className="inline-flex">{formatCurrency(usStateWeeklyLivingWage)}</span>
                   </dd>
@@ -109,7 +109,7 @@ const StateCard = (props: StateCardProps) => {
             {!isNaN(usStateWeeklyLivingWage) && (
               <dl className="font-bold">
                 <dt className="inline-block w-3/4">Total:</dt>
-                <dd className="inline-flex justify-between w-1/4 text-red-flag">
+                <dd className="inline-flex justify-between w-1/4 text-brand-red">
                   <span className="inline-flex">-</span>
                   <span className="inline-flex">{formatCurrency(livingCostCovered)}</span>
                 </dd>

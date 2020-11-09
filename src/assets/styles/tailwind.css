@@ -3,13 +3,33 @@
 @tailwind components;
 
 @font-face {
-  font-family: 'Lulo Clean W01 One Bold';
-  src: local('Lulo Clean W01 One Bold'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One-Bold.ttf') format('truetype');
+  font-family: 'Lulo Clean One Bold';
+  src: local('Lulo Clean One Bold'), url('../fonts/Lulo-Clean-One-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Lulo Clean W01 One';
-  src: local('Lulo Clean W01 One'), url('../fonts/FontsFree-Net-Lulo-Clean-W01-One.ttf') format('truetype');
+  font-family: 'Futura PT Medium';
+  src: url('../fonts/FuturaPTMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Medium Oblique';
+  src: url('../fonts/FuturaPTMediumOblique.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Light';
+  src: url('../fonts/FuturaPTLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futura PT Light Oblique';
+  src: url('../fonts/FuturaPTLightOblique.otf') format('opentype');
+}
+
+
+.handles-bg {
+  background-image: url('https://res.cloudinary.com/extend-pua/image/upload/f_auto,q_auto,w_auto/v1604685036/brand/Handles_BG-01_gtltve.png')
 }
 
 .bg-image-masks {
@@ -48,7 +68,7 @@
   content: attr(content-on);
   /* knob is 40px wide, so equivalent to `right: 4px;` but this applies the transition */
   left: calc(100% - 44px);
-  @apply bg-blue-deep-sky;
+  @apply bg-brand-blue;
   @apply text-white;
 }
 
@@ -62,6 +82,16 @@
 
 .tooltip:hover .tooltip-text {
   visibility: visible;
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.congress-person-card {
+  /* height: 460px; */
 }
 
 @tailwind utilities;
