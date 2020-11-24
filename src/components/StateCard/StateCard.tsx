@@ -59,7 +59,7 @@ const StateCard = (props: StateCardProps) => {
             <dl className="w-full">
               <dt className="inline-block w-3/4">Pre-pandemic:</dt>
               <dd className="inline-block w-1/4 text-right">{usState.prepandemicUePopulation}</dd>
-              <dt className="inline-block w-3/4">August:</dt>
+              <dt className="inline-block w-3/4">October:</dt>
               <dd className="inline-block w-1/4 text-right">{usState.juneUePopulation}</dd>
             </dl>
           </div>
