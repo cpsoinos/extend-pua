@@ -135,8 +135,8 @@ const CongressPersonCard = (props: CongressPersonCardProps) => {
             </li>
           ))}
         </ul>
-        <Logo className="absolute bottom-0 pb-6 px-2" party={party} />
-        <small className="absolute bottom-0 right-0 pr-1">
+        <Logo className="absolute bottom-0 pb-6" party={party} />
+        <small className="absolute bottom-0 right-0 pr-2">
           <Button href="mailto:fyi@extendpua.org" name="report_inaccurate_information">Report inaccurate information</Button>
         </small>
       </div>

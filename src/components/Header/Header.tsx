@@ -42,7 +42,7 @@ const Header = () => {
       <div className="font-luloBold text-xxs md:text-base text-center text-white md:tracking-widest">
         <p className="inline-block">SENATE&nbsp;AND&nbsp;HOUSE CONTACT&nbsp;DATABASE</p>
         <span className="md:block lg:inline-block md:text-xs lg:text-base">
-          <span className="md:hidden">&nbsp;|&nbsp;</span>
+          <span className="md:hidden lg:inline-block">&nbsp;|&nbsp;</span>
           A&nbsp;RESOURCE&nbsp;FROM:
         </span>
       </div>
