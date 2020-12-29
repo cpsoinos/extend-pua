@@ -95,6 +95,7 @@ const CongressSocialHandles = () => {
 
   return (
     <>
+      <p className="mt-3 text-white">Make 3 Calls. Both Senators from your State and also your Congressperson. Not sure who your Congressperson is? You can check here:</p>
       <div className="flex justify-between items-end mt-4 mb-6">
         <div className="flex justify-center">
           <label>
