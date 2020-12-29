@@ -7,6 +7,8 @@ import sortBy from 'lodash/sortBy'
 import { CongressDbRecord } from 'types/CongressDbRecord'
 import { useProPublica } from 'hooks/useProPublica'
 import { Member } from 'types/ProPublicaMembersResponse'
+import { CongressBranch } from 'types/CongressBranch'
+import { filterByBranch } from 'util/filterByBranch'
 
 const CongressSocialHandles = () => {
   const [senate, setSenate] = useState<Member[]>([])
@@ -16,7 +18,7 @@ const CongressSocialHandles = () => {
   const [filteredCongressMembers, setFilteredCongressMembers] = useState<CongressDbRecord[]>([])
   const { getCongressMembers } = useCongressDatabase()
   const [orderBy, setOrderBy] = useState('st')
-  const [branch, setBranch] = useState('All')
+  const [branch, setBranch] = useState<CongressBranch>('All')
   const { addIndex, addDocuments, search } = useSearch()
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
@@ -58,10 +60,10 @@ const CongressSocialHandles = () => {
 
   const onSearch = (event: React.FormEvent<HTMLInputElement>) => {
     const query = event.currentTarget.value
-    if (query === '') setFilteredCongressMembers(congressMembers)
+    if (query === '') setFilteredCongressMembers(filterByBranch(congressMembers)(branch))
     else {
       const results = search(query) as CongressDbRecord[]
-      setFilteredCongressMembers(results)
+      setFilteredCongressMembers(filterByBranch(results)(branch))
     }
   }
 
@@ -70,11 +72,9 @@ const CongressSocialHandles = () => {
     if (branch === 'All') {
       setFilteredCongressMembers(congressMembers)
     } else {
-      const results = congressMembers.filter((official) => {
-        return official.branch === branch
-      })
-      setFilteredCongressMembers(results)
+      setFilteredCongressMembers(filterByBranch(congressMembers)(branch))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [branch, congressMembers])
 
   const sortOptions = [
@@ -83,7 +83,7 @@ const CongressSocialHandles = () => {
     { value: 'reElection', text: 'Re-election' },
     { value: 'last', text: 'Name' },
   ]
-  const branches = ['All', 'Senate', 'House']
+  const branches: CongressBranch[] = ['All', 'Senate', 'House']
 
   const findNextElection = (congressPerson: CongressDbRecord) => {
     const collection = congressPerson.branch === 'Senate' ? senate : house
@@ -107,7 +107,7 @@ const CongressSocialHandles = () => {
           </label>
           <label className="ml-2">
             <span className="text-white mr-2">Branch:</span>
-            <select className="text-gray-900 p-1 rounded-md shadow" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setBranch(event.target.value)}>
+            <select className="text-gray-900 p-1 rounded-md shadow" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setBranch(event.target.value as CongressBranch)}>
               {branches.map((branch) => {
                 return <option key={branch} value={branch}>{branch}</option>
               })}
