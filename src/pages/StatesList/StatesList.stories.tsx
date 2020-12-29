@@ -5,7 +5,7 @@ import withBaseStyles from '../../../.storybook/decorators/withBaseStyles'
 export default {
   title: 'pages/StatesList',
   component: StatesList,
-  decorators: [withBaseStyles]
+  // decorators: [withBaseStyles]
 }
 
 export const Default = () => <StatesList />
