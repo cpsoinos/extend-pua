@@ -38,7 +38,7 @@ export const useBuildSocialInfo = () => {
     return {
       platform: 'phone' as const,
       handle: `DC: ${congressPerson.phoneNumber}\n${congressPerson.localPhone}`,
-      url: 'https://wwww.extendpua.org/call',
+      url: 'https://www.extendpua.org/call',
       icon: PhoneIcon
     }
   }
